@@ -1,0 +1,91 @@
+<div  ng-show="SAV_BTN == 'Y'">
+						<!-- body_main_contents_title:START -->
+                        <div class="content-title">{{pageTitle}}
+                            <div class="title-btn">
+                                <ul>
+                                    <li><div ng-show="SAV_BTN == 'Y'"><span class="glyphicon glyphicon-floppy-disk"></span> 저장</div></li>
+                                    <li><div><span class="glyphicon glyphicon-remove"></span> 삭제</div></li>
+                                    <li><div><span class="glyphicon glyphicon-repeat"></span> 초기화</div></li>
+                                    <li><div><span class="glyphicon glyphicon-file"></span> 엑셀</div></li>
+                                    <li><div><span class="glyphicon glyphicon-fullscreen"></span> 최대화</div></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- body_main_contents_title:END -->
+                        <!-- body_main_contents_content:START -->
+                        <div class="content">
+                            <!-- body_main_contents_content:START -->
+                            <!-- body_main_contents_content_type1_option:START -->
+                            <table class="table table-bordered t-table">
+                                <tbody>
+                                    <tr>
+                                        <td class="title">품목</td>
+                                        <td>
+                                            <div class="input-multi">
+                                                <select class="form-control input-sm">
+                                                    <option>가나다라</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                                <select class="form-control input-sm">
+                                                    <option>가나다라</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                                <select class="form-control input-sm ">
+                                                    <option>가나다라</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td class="ta-c">
+                                            <button class="btn btn-tbroad btn-xs">조회</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- body_main_contents_content_type1_option:END -->
+                            <!-- body_main_contents_content_type1_action:START -->
+                            <div class="r-btn-wrap">
+                                <button class="btn btn-tbroad2 btn-xs">저장</button>
+                                <button class="btn btn-tbroad2 btn-xs">삭제</button>
+                            </div>
+                            <table class="table table-bordered t-table has-top-btn">
+                                <tbody>
+                                    <tr>
+                                        <td class="title">자재코드 <span>*</span></td>
+                                        <td><input type="text" class="form-control input-sm" placeholder="" readonly="" ng-model="gridform.com_id"></td>
+                                        <td class="title">철거자재</td>
+                                        <td><input type="checkbox"></td>
+                                        <td class="title">WMS연동</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">규격</td>
+                                        <td><input type="text" class="form-control input-sm" placeholder="" ng-model="gridform.spec_gbn"></td>
+                                        <td class="title">모델</td>
+                                        <td><input type="text" class="form-control input-sm input-required" placeholder="" ng-model="gridform.proc_st"></td>
+                                        <td class="title">제조사</td>
+                                        <td><input type="text" class="form-control input-sm" placeholder="" ng-model="gridform.spec_cd"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- body_main_contents_content_type1_action:END -->
+                            <!-- body_main_contents_content_type1_grid:START -->
+                            <hr>
+                            <h5 class="t-title">설계서 현황</h5>
+                            <div class="specification">
+                            	<div id="grdMain"></div>
+                            </div>
+                            <!-- body_main_contents_content_type1_grid:END -->
+                            <!-- body_main_contents_content:END -->
+                        </div>
+                        <!-- body_main_contents_content:END -->
+</div>

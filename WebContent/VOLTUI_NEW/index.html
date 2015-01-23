@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html ng-app="cpmApp">
+    <!-- head:START -->
+    <head>
+        <!-- head_meta:START -->
+        <meta charset="UTF-8"  content="no-cache">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+        <!-- head_meta:END -->
+        <!-- head_title:START -->
+        <title></title>
+        <!-- head_title:END -->
+        <!-- start: Mobile Specific -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- end: Mobile Specific -->
+        <!-- head_css:START -->
+        <link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="assets/css/datepicker3.css" type="text/css" /> -->
+        <link rel="stylesheet" href="css/style.css" type="text/css" />
+        <!-- head_css:END -->
+        <!-- head_script:START -->
+        <script src="assets/js/jquery-1.11.0.min.js"></script>
+        <script src="assets/js/jquery-ui-1.10.4.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <!-- <script src="assets/js/bootstrap-datepicker.min.js"></script> -->
+        <!--[if lt IE 9]>
+            <script src="assets/js/html5shiv.js"></script>
+            <script src="assets/js/respond.min.js"></script>
+        <![endif]-->
+        <script>
+            $(function () {
+                $(document).ready(function () {
+                    $('.tab-menu').children('div').off('click').on('click', function () {
+                        $('.tab-menu div').removeClass('active');
+                        $(this).addClass('active');
+                    });
+                });
+            });
+        </script>
+        <!-- head_css:END -->
+    </head>
+    <!-- head:END -->
+    <!-- body:START -->
+    <body>
+        <div class="t-wrap">
+            <!-- body_title:START -->
+            <header>
+                <a class="logo"><img src="img/ci_tbroad.png" alt="" /> <span>공사공정관리시스템</span></a>
+                <div class="wrap-my">
+                    <ul>
+                        <li><div><span class="glyphicon glyphicon-user"></span>홍길동님</div></li>
+                        <li><div><span class="glyphicon glyphicon-log-out"></span>로그아웃</div></li>
+                        <li><div><span class="glyphicon glyphicon-cog"></span>설정</div></li>
+                    </ul>
+                </div>
+            </header>
+            <!-- body_title:END -->
+            <!-- body_main:START -->
+            <div class="t-container">
+                <div class="row t-row" ng-controller="MenuCtrl_cpmApp" ng-init="oneDepth()">
+                    <!-- body_main_left_category:START -->
+                    <div id="left-category">
+                        <div class="inner-category">
+                            <div class="category-menu">
+                                <!-- 
+                                <div>
+                                    <button>Dash<br/>Board</button>
+                                </div>
+                                <div>
+                                    <button class="active">공정<br/>관리</button>
+                                </div> 
+                                -->
+                                <div>
+                                    <button ng-repeat="menuList in menuLists | menufilter:rootMenuId" ng-click="goTwoDepth(menuList.MENU_ID)">
+										{{menuList.DESCRIPTION}}
+									</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- body_main_left_category:END -->
+                    <!-- body_main_left_menu:START -->
+					<div id="left-menu">
+                        <div class="menu-item" ng-repeat="twoDepthMenu in menuLists | menufilter:twoDepthMenuId" ng-click="goThreeDepth()">
+                           <div class="menu-title">{{twoDepthMenu.DESCRIPTION}}<span class="caret"></span></div>
+                            <ul class="depth-1">
+                                <li ng-repeat="threeDepthMenu in menuLists | menufilter:twoDepthMenu.MENU_ID">
+                                    <span class="glyphicon glyphicon-plus-sign"></span>
+                                    {{threeDepthMenu.DESCRIPTION}}
+                                    <ul class="depth-2" ng-repeat="fourDepthMenu in menuLists | menufilter:threeDepthMenu.MENU_ID">
+                                        <li><div ng-click="goContents(fourDepthMenu.MENU_ID, fourDepthMenu.PROG_NAME, fourDepthMenu.SAV_BTN, fourDepthMenu.URL)">{{fourDepthMenu.DESCRIPTION}}</div></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- body_main_left_menu:END -->
+                    <!-- body_main_contents:START -->
+                    <div class="content-wrap">
+                    	<div ng-view></div>
+                    </div>
+                    <!-- body_main_contents:END -->
+                </div>
+            </div>
+            <!-- body_main:END -->
+        </div>
+        <!-- JavaScript:START -->
+        <!-- AngularJS JavaScript:START -->
+        <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="bower_components/angular.js"></script>
+        <script src="bower_components/angular-route.js"></script>
+        <script src="bower_components/angular-touch.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/services.js"></script>
+        <script src="js/controllers.js"></script> 
+        <script src="js/controllers/template_type01.js"></script>
+        <script src="js/controllers/template_type02.js"></script>
+        <script src="js/controllers/template_type03.js"></script>
+        <script src="js/controllers/template_type04.js"></script>
+        <script src="js/controllers/template_type05.js"></script>
+        <script src="js/controllers/template_type06.js"></script>
+        <script src="js/controllers/template_type07.js"></script>
+        <script src="js/filters.js"></script>
+        <script src="js/directives.js"></script>
+        <!-- AngularJS JavaScript:END -->
+		<!-- start: realGrid -->
+		<script type="text/javascript" src="assets/js/realGrid/browserCheck.js"></script>
+		<script type="text/javascript" src="assets/js/realGrid/realgridlic.js"></script>
+		<script type="text/javascript" src="assets/js/realGrid/realgridplus.js"></script>
+		<script type="text/javascript" src="assets/js/realGrid/realgridutil.js"></script>
+		<script type="text/javascript" src="assets/js/realGrid/swfobject.js"></script>
+		<!-- end: realGrid -->
+		<!-- start: local Storage -->
+		<script type="text/javascript" src="assets/js/angular-local-storage.js"></script>
+		<script type="text/javascript" src="assets/js/common.js"></script>
+		<!-- end: local Storage -->
+        <!-- Javascript:END -->
+    </body>
+    <!-- body:END -->
+</html>

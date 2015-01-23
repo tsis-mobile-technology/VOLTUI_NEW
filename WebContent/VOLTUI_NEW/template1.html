@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp-template1" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp-template1" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp-template1" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="ko" ng-app="myApp-template1" class="no-js"> <!--<![endif]-->
+    <head>
+		<!-- start: Meta -->
+		<meta charset="utf-8" content="no-cache">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+		<title>VOLT UI - Template1(AngularJS_Bootstrap)</title>
+		<meta name="description" content="VOLT UI-Template1(AngularJS_Bootstrap)">
+		<meta name="author" content="tsis,Technology Architecture,Technology Team">
+		<meta name="keyword" content="Bootstrap, Admin, Template, Theme, Responsive, AngularJS">
+		<!-- end: Meta -->
+		
+		<!-- start: Mobile Specific -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- end: Mobile Specific -->
+		<!-- start: CSS -->
+        <link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="assets/css/datepicker3.css" type="text/css" />
+        <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+        <link rel="stylesheet" href="assets/css/template1_style.css" type="text/css" />
+        <!-- end: CSS -->
+        <!-- React.js -->
+		<link rel="stylesheet" type="text/css" href="assets/css/ngReactGrid-0.6.5.css">
+		<!-- ngDialog -->
+		<link rel="stylesheet" href="assets/css/ngDialog.css">
+		<link rel="stylesheet" href="assets/css/ngDialog-theme-default.css">
+		<link rel="stylesheet" href="assets/css/ngDialog-theme-plain.css">
+    </head>
+    <body>
+    <div class="t-wrap">
+        <header></header>
+        <div class="t-container">
+            <div class="row">
+            <!-- left-menu-one-depth start -->
+			<div id="left-category" class="col-md-1"  ng-controller="MyCtrl_template1_left_menu_one">
+				<div ng-include src="'partials/template1_left_menu_one_depth.html'" ng-init="oneDepth()"></div>
+			</div>
+            <!-- left-menu-one-depth end -->
+            <!-- left-menu-two-depth start -->
+            <div id="left-menu" class="col-md-2"  ng-controller="MyCtrl_template1_left_menu_two">
+				<div ng-include src="'partials/template1_left_menu_two_depth.html'" ng-init="twoDepth()"></div>
+            </div>
+            <!-- left-menu-two-depth end -->
+            <!-- contents start -->
+              <div class="col-md-9"  ng-controller="MyCtrl_template1_left_menu_one">
+                  <div class="content">
+                    <!-- contents-sub-menu-depth start -->
+					<div ng-include src="'partials/template1_contents_sub_menu_depth.html'"></div>
+                    <!-- contents-sub-menu-depth end -->
+                    <div ng-view></div>
+                  </div>
+              </div>
+            <!-- contents end -->
+            </div>
+        </div>
+    </div>
+	<!-- start: JavaScript-->
+	<!-- start: AngularJS JavaScript-->
+	<script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+	<script src="bower_components/angular.js"></script>
+	<script src="bower_components/angular-route.js"></script>
+	<script src="bower_components/angular-touch.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/services.js"></script>
+	<script src="js/controllers.js"></script> 
+	<script src="js/controllers/MyCtrl_template1_main.js"></script>
+	<script src="js/controllers/MyCtrl_template1_main2.js"></script>
+	<script src="js/controllers/MyCtrl_template1_welcome.js"></script>
+	<script src="js/filters.js"></script>
+	<script src="js/directives.js"></script>
+	<!-- end: AngularJS JavaScript-->
+		
+	<script src="assets/js/jquery-1.11.0.min.js"></script>
+	<script src="assets/js/jquery-ui-1.10.4.min.js"></script>
+	<script src="assets/js/uncompressed/bootstrap.js"></script>
+	<script src="assets/js/uncompressed/bootstrap-datepicker.js"></script>
+	<!--[if lt IE 9]>
+	    <script src="assets/js/uncompressed/html5shiv.js"></script>
+	    <script src="assets/js/respond.min.js"></script>
+	<![endif]-->
+	<!-- start: React.js -->
+	<script src="assets/js/react-0.11.1.min.js" type="text/javascript" ></script>
+	<!-- <script src="assets/js/ngReactGrid-0.6.5.min.js" type="text/javascript" ></script> -->
+	<script src="assets/js/ngReactGrid-0.6.5.min.js" type="text/javascript" ></script>  
+	<!-- end: React.js -->
+	<!-- start: realGrid -->
+	<script type="text/javascript" src="assets/js/realGrid/browserCheck.js"></script>
+	<script type="text/javascript" src="assets/js/realGrid/realgridlic.js"></script>
+	<script type="text/javascript" src="assets/js/realGrid/realgridplus.js"></script>
+	<script type="text/javascript" src="assets/js/realGrid/realgridutil.js"></script>
+	<script type="text/javascript" src="assets/js/realGrid/swfobject.js"></script>
+	<!-- end: realGrid -->
+	<!-- start: ngDialog -->
+	<script type="text/javascript" src="assets/js/ngDialog.min.js"></script>
+	<!-- end: ngDialog -->
+	<!-- end: JavaScript-->
+    </body>
+</html>
