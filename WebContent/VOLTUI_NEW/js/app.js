@@ -6,7 +6,8 @@ angular.module('cpmApp', [
   'cpmApp.services',
   'cpmApp.directives',
   'cpmApp.controllers',
-  'LocalStorageModule'
+  'LocalStorageModule',
+  'ngDialog'
   ]).
 config(['$routeProvider', function($routeProvider) {
 $routeProvider.when('/type01', {templateUrl: 'partials/template_type01.html', controller: 'CpmCtrl_type01'});

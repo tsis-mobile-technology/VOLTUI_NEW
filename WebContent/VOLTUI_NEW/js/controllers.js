@@ -10,7 +10,11 @@ templateCtrl.controller('MenuCtrl_cpmApp', ['$scope', '$location', '$route', '$r
 
 	    $scope.oneDepth = function () {
 	    	console.log("oneDepth");
-	    	$scope.menuLists = localStorageService.get('menuLists');
+	    	$scope.rootMenuId = "00000";
+        	$scope.twoDepthMenuId = "G0000";
+        	
+	    	if($scope.menuLists == null)
+	    		$scope.menuLists = localStorageService.get('menuLists');
 
 	    	$scope.storageType = 'Local storage';
 
@@ -21,15 +25,12 @@ templateCtrl.controller('MenuCtrl_cpmApp', ['$scope', '$location', '$route', '$r
 	        if (!localStorageService.isSupported) {
 	          $scope.storageType = 'Cookie';
 	        }
-	    	$scope.$watch('menuLists', function(value){
-	    	      localStorageService.set('menuLists',value);
-	    	      $scope.localStorageDemoValue = localStorageService.get('menuLists');
-	    	});
 	    	
 	    	function setDaoJSONResult(result, status, headers, config) {
-	    		$scope.menuLists = result;
-	        	$scope.rootMenuId = "00000";
-	        	$scope.twoDepthMenuId = "G0000";
+//	    		$scope.menuLists = result;
+	    		localStorageService.remove('menuLists');
+	    		localStorageService.set('menuLists',result);
+	        	$scope.menuLists = localStorageService.get('menuLists');
 	        	console.log("get db");
 	        }
 	        
@@ -37,8 +38,10 @@ templateCtrl.controller('MenuCtrl_cpmApp', ['$scope', '$location', '$route', '$r
 	            console.log("call error");
 	        }
 	    	// get data
-	        if(!$scope.menuLists)
+	        if($scope.menuLists == null) {
+	        	console.log("get munuLists");
 	        	requestHTTP.getJsonCrossdomainCallback("/test-web/menu2.jsp", "", setDaoJSONResult, onStatsChart2Fail);
+	        }
 	        
 	    };
 

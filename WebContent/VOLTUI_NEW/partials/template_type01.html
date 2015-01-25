@@ -3,9 +3,9 @@
                         <div class="content-title">{{pageTitle}}
                             <div class="title-btn">
                                 <ul>
-                                    <li><div ng-show="SAV_BTN == 'Y'"><span class="glyphicon glyphicon-floppy-disk"></span> 저장</div></li>
-                                    <li><div><span class="glyphicon glyphicon-remove"></span> 삭제</div></li>
-                                    <li><div><span class="glyphicon glyphicon-repeat"></span> 초기화</div></li>
+                                    <li><div ng-show="SAV_BTN == 'Y'" ng-click="dialogTest('save')"><span class="glyphicon glyphicon-floppy-disk"></span> 저장</div></li>
+                                    <li><div ng-click="dialogTest('delete')"><span class="glyphicon glyphicon-remove"></span> 삭제</div></li>
+                                    <li><div ng-click="dialogTest('clear')"><span class="glyphicon glyphicon-repeat"></span> 초기화</div></li>
                                     <li><div><span class="glyphicon glyphicon-file"></span> 엑셀</div></li>
                                     <li><div><span class="glyphicon glyphicon-fullscreen"></span> 최대화</div></li>
                                 </ul>
