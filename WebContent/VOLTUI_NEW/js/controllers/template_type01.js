@@ -17,7 +17,7 @@ templateCtrl.controller('CpmCtrl_type01', ['$scope', 'ngDialog', function($scope
 			});
 		}
 		else if(flag == "clear") {
-			console.log("delete button click");
+			console.log("clear button click");
 			$scope.plainPopupTitleText = "테스트 팝업";
 			$scope.plainPopupContentText = "내용은 여기에 입력하세요!(2초 후 사라집니다.)";
 			var dialog = ngDialog.open({
@@ -40,73 +40,10 @@ templateCtrl.controller('CpmCtrl_type01', ['$scope', 'ngDialog', function($scope
 				cache: false,
 				closeByDocument: false,
 				closeByEscape: false,
-				controller: ['$scope', function ($scope) {
-					var breedGrid;
-					var breedProvider;
-					var breedLoading;
-					setupGrid("grdBreed", "100%", "100%");
-					console.log("melong");
-//					var id = "grdBreed";
-//					RealGrids.onload = function(id) {
-						console.log("melong1");
-//						breedGrid = new RealGrids.GridView(id);
-						breedGrid = new RealGrids.GridView(grdBreed);
-						breedProvider = new RealGrids.LocalDataProvider();
-						breedGrid.setDataProvider(breedProvider);
-						var fields = [{fieldName: "key"},{fieldName: "code"},{fieldName: "name"}];
-						breedProvider.setFields(fields);
-						var columns = [{fieldName: "key",width: 20,header: { text: "key" },styles: { textAlignment: "far" }},
-						               {fieldName: "code",width: 20,header: { text: "code" },styles: { textAlignment: "near" }},
-									   {fieldName: "name",width: 80,header: { text: "name" },styles: { textAlignment: "near" }}];
-				        breedGrid.setColumns(columns);
-				        breedGrid.setOptions({panel: {visible: true},footer: {visible: true},checkBar: {visible: true},statesBar: {visible: true},
-				            edit: {insertable: false,appendable: false,updatable: false,deletable: false}});
-				        breedGrid.onDataCellClicked = function(id, index) {setBreedData();};
-				        breedProvider.loadData({
-			    	        type: "json",
-			    	        method: "post",
-			    	        url: "http://localhost:8080/test-web/breed.jsp",
-			    	        progress: true
-			    	    }, function (provider) {
-			    	        var count = provider.getRowCount();
-			    	        $("#loadResult").css("color", "green").text(parseInt(count).toLocaleString() + " rows loaded.").show();
-			    	        setBreedLoading(false);
-			    	        grdBreed.setFocus();
-			    	    }, function (provider, message) {
-			    	        $("#loadResult").css("color", "red").text("Load failed: " + message).show();
-			    	        setBreedLoading(false);
-			    	    });
-//					};
-					function setBreedData() {
-				        var row = 0;
-				        var current = grdBreed.getCurrent();
-				     
-				        if (current) {
-				            row = Math.max(0, current.dataRow);
-				        }
-				     
-				        var v = breedProvider.getJsonRow(row);
-				        console.log(row + " => " + JSON.stringify(v));
-				        $scope.gridform = [];
-				    	$scope.gridform = mainProvider.getJsonRow(row);
-				    	$scope.breedName = $scope.gridform.name;
-				    	console.log($scope.gridform.name);
-				    	
-				    	$scope.$apply();
-				    }
-					function setBreedLoading(v) {
-				        if (v != breedLoading) {
-				        	breedLoading = v;
-
-				            // data load가 시작되면 편집을 못하게 한다.
-				        	breedGrid.setEditOptions({
-				                readOnly: breedLoading
-				            });
-				        }
-				    }
-				}],
+				controller: 'CpmCtrl_popup'
 			});
 		}
+
 	};
 	
     // RealGrid variables
