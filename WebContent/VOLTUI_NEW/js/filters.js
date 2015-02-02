@@ -17,4 +17,18 @@ angular.module('cpmApp.filters', []).
 	        return element.UP_MENU_ID === search;
 	      });
 	  };
-});
+  }).
+  filter('productTypeFilter', function() {
+	  return function(items, search) {
+	    if (!search) {
+	      return items;
+	    }
+	    var group = search.optionGroup;
+	    if (!group || '' === group) {
+	      return items;
+	    }
+	    return items.filter(function(element, index, array) {
+	        return element.group === search.optionGroup;
+	      });
+	  };
+  });

@@ -45,6 +45,36 @@
                                                 </select>
                                             </div>
                                         </td>
+                                        
+                                        <td class="ta-c">
+                                            <button class="btn btn-tbroad btn-xs">조회</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">품목2</td>
+                                        <td>
+                                            <div class="input-multi">
+                                                <select class="form-control input-sm "  ng-model="formInfo.optionValue" >
+													<option value={{optionList.code}} ng-repeat ="optionList in optionLists | filter:{group: 'G2'}">{{optionList.value}}</option>
+												</select>
+                                            </div>
+                                            <input type="text" ng-model="formInfo.optionValue">
+                                        </td>
+                                        <td class="ta-c">
+                                            <button class="btn btn-tbroad btn-xs">조회</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">품목3</td>
+                                        <td>
+                                            <div class="input-multi">
+                                                <select class="form-control input-sm "  ng-model="formInfoTwo.optionValue" >
+													<option value={{optionList.code}} ng-repeat ="optionList in optionLists | productTypeFilter: formInfoTwo">{{optionList.value}}</option>
+												</select>
+                                            </div>
+                                            <input type="text" ng-model="formInfoTwo.optionGroup" ng-init="G1">
+                                            <input type="text" ng-model="formInfoTwo.optionValue">
+                                        </td>
                                         <td class="ta-c">
                                             <button class="btn btn-tbroad btn-xs">조회</button>
                                         </td>

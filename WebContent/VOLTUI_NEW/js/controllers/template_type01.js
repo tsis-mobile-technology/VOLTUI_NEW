@@ -1,7 +1,7 @@
 'use strict';
 
 /* Controllers */
-templateCtrl.controller('CpmCtrl_type01', ['$scope', 'ngDialog', function($scope, ngDialog){
+templateCtrl.controller('CpmCtrl_type01', ['$scope', 'ngDialog', 'requestHTTP', function($scope, ngDialog, requestHTTP){
 	
 	//Dialog example
 	$scope.dialogTest = function(flag) {
@@ -223,5 +223,16 @@ templateCtrl.controller('CpmCtrl_type01', ['$scope', 'ngDialog', function($scope
     	        $("#loadResult").css("color", "red").text("Load failed: " + message).show();
     	        setLoading(false);
     	    });
-    }    
+    } 
+    
+    //option box example
+    loadDataOption();
+    function setOptionJSONResult(result, status, headers, config) {
+		$scope.optionLists = result;
+    	console.log("get optionLists db");
+    }
+    
+    function loadDataOption() {
+    	requestHTTP.getJsonCrossdomainCallback("/test-web/product_type.jsp", "", setOptionJSONResult, function onStatsChart2Fail(data, status, headers, config) {console.log("call error");});
+    }
 }]);
