@@ -9,8 +9,7 @@ templateCtrl.controller('CpmCtrl_popup', ['$scope', 'ngDialog', function($scope,
 	$scope.onSearch = function() {
 		console.log("melong 10000:" + $scope.breedform.name);
 	};
-//	setupGrid("grdBreed", "100%", "100%");
-//	console.log("melong : ");
+
 	RealGrids.onload = function(id) {
 		console.log("melong1");
 		breedGrid = new RealGrids.GridView(id);
@@ -41,6 +40,7 @@ templateCtrl.controller('CpmCtrl_popup', ['$scope', 'ngDialog', function($scope,
 	        setBreedLoading(false);
 	    });
 	};
+	
 	function setBreedData(id, index) {
         var row = 0;
         var current = grdBreed.getCurrent();
@@ -52,6 +52,7 @@ templateCtrl.controller('CpmCtrl_popup', ['$scope', 'ngDialog', function($scope,
     	$scope.breedform = breedProvider.getJsonRow(row);
     	$scope.$apply();
     }
+	
 	function setBreedLoading(v) {
         if (v != breedLoading) {
         	breedLoading = v;
@@ -67,4 +68,37 @@ templateCtrl.controller('CpmCtrl_popup', ['$scope', 'ngDialog', function($scope,
 		setupGrid("grdBreed", "100%", "100%");
 		console.log("melong : ");
 	}, 1000);
+	
+	//Dialog example
+	$scope.dialogTwoTest = function(flag) {
+		console.log("melong");
+		if(flag == "clear") {
+			console.log("clear button click");
+			$scope.plainPopupTitleText = "테스트 팝업";
+			$scope.plainPopupContentText = "내용은 여기에 입력하세요!(2초 후 사라집니다.)";
+			var dialog = ngDialog.open({
+				template: 'partials/popup/plainPopup.html',
+				className: 'ngdialog-theme-plain',
+				scope: $scope,
+				closeByDocument: false,
+				closeByEscape: false
+			});
+			setTimeout(function () {
+				dialog.close();
+			}, 2000);
+		}
+		else if(flag == "delete") {
+			console.log("delete button click");
+			ngDialog.open({
+				template: 'partials/popup/popup01.html',
+				className: 'ngdialog-theme-plain',
+				scope: $scope,
+				cache: false,
+				closeByDocument: false,
+				closeByEscape: false,
+				controller: 'CpmCtrl_popup'
+			});
+		}
+
+	};
 }]);

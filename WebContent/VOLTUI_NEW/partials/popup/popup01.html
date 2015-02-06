@@ -1,4 +1,4 @@
-		<div class="t-wrap popup-wrap">
+		<div class="popup-wrap">
             <header>
                 <div class="logo">거래처코드 조회</div>
             </header>
@@ -12,6 +12,14 @@
                                 </td>
                                 <td class="ta-c">
                                     <button class="btn btn-tbroad btn-xs" ng-click="onSearch()">조회</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" class="form-control input-sm input-required" placeholder="a" ng-model="breedform.name">
+                                </td>
+                                <td class="ta-c">
+                                    <button class="btn btn-tbroad btn-xs" ng-click="dialogTwoTest('clear')">추가_팝업</button>
                                 </td>
                             </tr>
                         </tbody>
