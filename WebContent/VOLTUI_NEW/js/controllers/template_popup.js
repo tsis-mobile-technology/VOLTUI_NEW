@@ -154,7 +154,6 @@ templateCtrl.controller('CpmCtrl_popup_save_sub', ['$scope', 'ngDialog', functio
 		console.log("melong sub:" + $scope.breedformsub.name);
 		alert("melong sub:"+ $scope.breedformsub.name);
 		$scope.breedform.subname = $scope.breedformsub.name + "(" + $scope.breedformsub.code + ")";
-		
 	};
 
 	RealGrids.onload = function(id) {
@@ -175,7 +174,7 @@ templateCtrl.controller('CpmCtrl_popup_save_sub', ['$scope', 'ngDialog', functio
         breedProvider.loadData({
 	        type: "json",
 	        method: "post",
-	        url: "http://localhost:8080/test-web/product_kind_sub.jsp",
+	        url: "http://localhost:8080/test-web/product_type_sub.jsp",
 	        progress: true
 	    }, function (provider) {
 	        var count = provider.getRowCount();
