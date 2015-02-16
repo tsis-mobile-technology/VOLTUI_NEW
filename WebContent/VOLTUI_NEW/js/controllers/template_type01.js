@@ -13,7 +13,8 @@ templateCtrl.controller('CpmCtrl_type01', ['$scope', 'ngDialog', 'requestHTTP', 
 				scope: $scope,
 				cache: false,
 				closeByDocument: false,
-				closeByEscape: false
+				closeByEscape: false,
+				controller: 'CpmCtrl_popup_save'
 			});
 		}
 		else if(flag == "clear") {
