@@ -54,8 +54,8 @@
                                         <td class="title">품목2</td>
                                         <td>
                                             <div class="input-multi">
-                                                <select class="form-control input-sm "  ng-model="formInfo.optionValue" >
-													<option value={{optionList.code}} ng-repeat ="optionList in optionLists | filter:{group: 'G2'}">{{optionList.value}}</option>
+                                                <select class="form-control input-sm "  ng-model="formInfo.optionValue">
+													<option value={{optionList.code}} ng-repeat ="optionList in optionLists | filter:{group: 'G2'}" ng-selected="{{optionList.code == formInfo.optionValue}}">{{optionList.value}}</option>
 												</select>
                                             </div>
                                             <input type="text" ng-model="formInfo.optionValue">

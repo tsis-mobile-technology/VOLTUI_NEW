@@ -134,8 +134,15 @@ header .wrap-my{
     display: table;
     width: 100%;
     background-color: #fff;
-    min-height: 100%;
+    /* min-height: 100%; */
 }
+
+.t-content{
+    display: table;
+    width: 100%;
+    background-color: #fff;
+}
+
 .t-row{
     display: table-row;
 }

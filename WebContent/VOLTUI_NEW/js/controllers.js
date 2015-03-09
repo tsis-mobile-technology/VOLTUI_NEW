@@ -9,7 +9,7 @@ templateCtrl.controller('MenuCtrl_cpmApp', ['$scope', '$location', '$route', '$r
 	    }
 
 	    $scope.oneDepth = function () {
-	    	console.log("oneDepth");
+	    	console.log("goOnDepth:" );
 	    	$scope.rootMenuId = "00000";
         	$scope.twoDepthMenuId = "G0000";
         	
@@ -59,7 +59,7 @@ templateCtrl.controller('MenuCtrl_cpmApp', ['$scope', '$location', '$route', '$r
 	    };
 	    
 	    $scope.goTwoDepth = function(MENU_ID) {
-	    	console.log(MENU_ID);
+	    	console.log("goTwoDepth:" + MENU_ID);
 	    	$scope.twoDepthMenuId = MENU_ID;
 	    };
 	    
