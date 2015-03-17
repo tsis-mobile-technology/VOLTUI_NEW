@@ -11,7 +11,7 @@ templateCtrl.controller('MenuCtrl_cpmApp', ['$scope', '$location', '$route', '$r
 	    $scope.oneDepth = function () {
 	    	console.log("goOnDepth:" );
 	    	$scope.rootMenuId = "00000";
-        	$scope.twoDepthMenuId = "G0000";
+        	$scope.twoDepthMenuId = "G0000"; 
         	
 	    	if($scope.menuLists == null)
 	    		$scope.menuLists = localStorageService.get('menuLists');
