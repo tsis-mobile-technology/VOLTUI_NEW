@@ -13,6 +13,21 @@ angular.module('cpmApp.directives', []).
   		elm.text(appname);
   	};
   }]).
+  directive('fileModel', ['$parse', function ($parse) {
+	    return {
+	        restrict: 'A',
+	        link: function(scope, element, attrs) {
+	            var model = $parse(attrs.fileModel);
+	            var modelSetter = model.assign;
+	            
+	            element.bind('change', function(){
+	                scope.$apply(function(){
+	                    modelSetter(scope, element[0].files[0]);
+	                });
+	            });
+	        }
+	    };
+  }]).  
   directive('draggable', function($document) {
 	  return function(scope, element, attr) {
 	    var startX = 0, startY = 0, x = 0, y = 0;
@@ -56,4 +71,26 @@ angular.module('cpmApp.directives', []).
 	      $document.off('mouseup', mouseup);
 	    }
 	  };
+	})
+	.directive('fileDownload', function ($compile) {
+		//https://atasteofsandwich.wordpress.com/2014/02/03/client-side-csv-download-with-angularjs/
+	    var fd = {
+	        restrict: 'A',
+	        link: function (scope, iElement, iAttrs) {
+	
+	            scope.$on("downloadFile", function (e, url) {
+	                var iFrame = iElement.find("iframe");
+	                if (!(iFrame && iFrame.length > 0)) {
+	                    iFrame = $("<iframe style='position:fixed;display:none;top:-1px;left:-1px;'/>");
+	                    iElement.append(iFrame);
+	                }
+	
+	                iFrame.attr("src", url);
+	
+	
+	            });
+	        }
+	    };
+
+    	return fd;
 	});

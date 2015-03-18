@@ -1,7 +1,7 @@
 'use strict';
 
 /* Controllers */
-templateCtrl.controller('CpmCtrl_type01', ['$scope', 'ngDialog', 'requestHTTP', function($scope, ngDialog, requestHTTP){
+templateCtrl.controller('CpmCtrl_type01', ['$scope', 'ngDialog', 'requestHTTP', 'fileUpload', function($scope, ngDialog, requestHTTP, fileUpload){
 	
 	//Dialog example
 	$scope.dialogTest = function(flag) {
@@ -45,6 +45,13 @@ templateCtrl.controller('CpmCtrl_type01', ['$scope', 'ngDialog', 'requestHTTP', 
 			});
 		}
 
+	};
+	
+	// File Upload Template
+	$scope.myFileUpload = function() {
+		var file = $scope.myFile;
+		var uploadUrl = 'http://www.example.com/images';
+		fileUpload.uploadFileToUrl(file, uploadUrl);
 	};
 	
     // RealGrid variables
