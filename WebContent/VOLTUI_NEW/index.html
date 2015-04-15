@@ -88,8 +88,10 @@
                            <div class="menu-title">{{twoDepthMenu.DESCRIPTION}}<span class="caret"></span></div>
                             <ul class="depth-1">
                                 <li ng-repeat="threeDepthMenu in menuLists | menufilter:twoDepthMenu.MENU_ID">
+                                    <div ng-click="threeDepthMenuClick(twoDepthMenu.MENU_ID)">
                                     <span class="glyphicon glyphicon-plus-sign"></span>
                                     {{threeDepthMenu.DESCRIPTION}}
+                                    </div>
                                     <ul class="depth-2" ng-repeat="fourDepthMenu in menuLists | menufilter:threeDepthMenu.MENU_ID">
                                         <li><div ng-click="goContents(fourDepthMenu.MENU_ID, fourDepthMenu.PROG_NAME, fourDepthMenu.SAV_BTN, fourDepthMenu.URL)">{{fourDepthMenu.DESCRIPTION}}</div></li>
                                     </ul>

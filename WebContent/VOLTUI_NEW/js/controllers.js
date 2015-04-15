@@ -58,6 +58,13 @@ templateCtrl.controller('MenuCtrl_cpmApp', ['$scope', '$location', '$route', '$r
 	    	
 	    };
 	    
+	    $scope.threeDepthMenuClick = function (MENU_ID) {
+	    	console.log("threeDepthMenuClick:" + MENU_ID);
+	    	$('.depth-2').hide();
+	    	$(this).children('.depth-1').show();
+	    	$(this).children('.depth-2').show();
+	    };
+	    
 	    $scope.goTwoDepth = function(MENU_ID) {
 	    	console.log("goTwoDepth:" + MENU_ID);
 	    	$scope.twoDepthMenuId = MENU_ID;

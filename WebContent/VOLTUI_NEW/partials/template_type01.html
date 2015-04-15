@@ -54,8 +54,8 @@
                                         <td class="title">품목2</td>
                                         <td>
                                             <div class="input-multi">
-                                                <select class="form-control input-sm "  ng-model="formInfo.optionValue" ng-initial>
-													<option value={{optionList.code}} ng-repeat ="optionList in optionLists | filter:{group: 'G2'}" ng-selected="{{optionList.code == formInfo.optionValue}}">{{optionList.value}}</option>
+                                                <select class="form-control input-sm "  ng-model="formInfo.optionValue" ng-init="formInfo.optionValue = optionList.value">
+													<option ng-repeat ="optionList in optionLists | filter:{group: 'G2'}" ng-init="formInfo.optionValue = optionList.value">{{optionList.value}}</option>
 												</select>
                                             </div>
                                             <input type="text" ng-model="formInfo.optionValue">
@@ -68,8 +68,8 @@
                                         <td class="title">품목3</td>
                                         <td>
                                             <div class="input-multi">
-                                                <select class="form-control input-sm "  ng-model="formInfoTwo.optionValue" >
-													<option value={{optionList.code}} ng-repeat ="optionList in optionLists | productTypeFilter: formInfoTwo">{{optionList.value}}</option>
+                                                <select class="form-control input-sm "  ng-model="formInfoTwo.optionValue"  ng-init="formInfoTwo.optionValue = optionList.value" >
+													<option ng-repeat ="optionList in optionLists | productTypeFilter: formInfoTwo" ng-init="formInfoTwo.optionValue = optionList.value">{{optionList.value}}</option>
 												</select>
                                             </div>
                                             <input type="text" ng-model="formInfoTwo.optionGroup" ng-init="G1">
