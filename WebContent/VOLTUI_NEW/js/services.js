@@ -55,7 +55,7 @@ angular.module('cpmApp.services', []).
 	                  'Access-Control-Allow-Methods': 'Origin Accept Content-Type X-Requested-With X-CSRF-Token'}
 	      }).
 	      success(function(data, status, headers, config) {
-	    	  console.log("Response : " + data._error);
+	    	  console.log("Success(" + url + param + ")");
 	      }).
 	      success(callback).
 	      error(failback);
