@@ -100,3 +100,27 @@ templateCtrl.controller('MenuCtrl_cpmApp', ['$scope', '$location', '$route', '$r
 		});	
 
 	}]);
+
+templateCtrl.controller('CpmCtrl_login', ['$scope', '$route', '$location', 'requestHTTP', 'localStorageService', function($scope, $route, $location, requestHTTP, localStorageService){
+
+	$scope.$on('$routeChangeSuccess', function(next, current) { console.log("on:$routeChangeSuccess"); });
+	$scope.$on('$routeUpdate', function(next, current) { console.log("on:$routeUpdate"); });
+	$scope.$on('$routeChangeStart', function(next, current) { console.log("on:$routeChangeStart"); });
+	$scope.$on('$locationChangeSuccess', function(next, current) { console.log("on:$locationChangeSuccess"); });
+	$scope.$on('$locationChangeStart', function(next, current) { console.log("on:$locationChangeStart"); });
+	$scope.$on('$includeContentRequested', function(next, current) { console.log("on:$includeContentRequested"); });
+	$scope.$on('$includeContentLoaded', function(next, current) { console.log("on:$includeContentLoaded"); });	
+	
+	$scope.submitLoginForm = function(isValid) {
+
+		if(isValid) {
+			//http call
+			$location.path("/dashboard")
+		}
+	};
+
+	
+	
+	
+	
+}]);
