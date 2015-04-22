@@ -23,12 +23,12 @@ angular.module('cpmApp.filters', []).
 	    if (!search) {
 	      return items;
 	    }
-	    var group = search.optionGroup;
+	    var group = search.group;
 	    if (!group || '' === group) {
 	      return items;
 	    }
 	    return items.filter(function(element, index, array) {
-	        return element.group === search.optionGroup;
+	        return element.group === search.group;
 	      });
 	  };
   });

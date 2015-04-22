@@ -88,7 +88,7 @@
                            <div class="menu-title">{{twoDepthMenu.DESCRIPTION}}<span class="caret"></span></div>
                             <ul class="depth-1">
                                 <li ng-repeat="threeDepthMenu in menuLists | menufilter:twoDepthMenu.MENU_ID">
-                                    <div ng-click="threeDepthMenuClick(twoDepthMenu.MENU_ID)">
+                                	<div class="menu-name" ng-click="threeDepthMenuClick(twoDepthMenu.MENU_ID)" >
                                     <span class="glyphicon glyphicon-plus-sign"></span>
                                     {{threeDepthMenu.DESCRIPTION}}
                                     </div>

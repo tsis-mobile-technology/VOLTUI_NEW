@@ -238,9 +238,16 @@ templateCtrl.controller('CpmCtrl_type01', ['$scope', 'ngDialog', 'requestHTTP', 
     function setOptionJSONResult(result, status, headers, config) {
 		$scope.optionLists = result;
     	console.log("get optionLists db");
+//    	$scope.formInfo = $scope.optionLists[0];
+//    	$scope.formInfoTwo = $scope.optionLists[1];
     }
     
     function loadDataOption() {
     	requestHTTP.getJsonCrossdomainCallback("/test-web/product_type.jsp", "", setOptionJSONResult, function onStatsChart2Fail(data, status, headers, config) {console.log("call error");});
     }
+    
+    $scope.formInfoChange = function() {
+    	console.log("melong");
+    	$('#formInfoTwo option')[0].selected = true;
+    };
 }]);
