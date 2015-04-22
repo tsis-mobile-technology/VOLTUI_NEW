@@ -103,7 +103,14 @@ templateCtrl.controller('MenuCtrl_cpmApp', ['$scope', '$location', '$route', '$r
 
 templateCtrl.controller('CpmCtrl_login', ['$scope', '$route', '$location', 'requestHTTP', 'localStorageService', function($scope, $route, $location, requestHTTP, localStorageService){
 
-	$scope.$on('$routeChangeSuccess', function(next, current) { console.log("on:$routeChangeSuccess"); });
+	$scope.$on('$routeChangeSuccess', function(next, current) { 
+		console.log("on:$routeChangeSuccess"); 
+		$scope.loginYn = localStorageService.get('loginYn');
+		if($scope.loginYn && $scope.loginYn === "OK") {
+			alert("자동 로그인되었습니다!");
+			$location.path("/dashboard");
+		}
+	});
 	$scope.$on('$routeUpdate', function(next, current) { console.log("on:$routeUpdate"); });
 	$scope.$on('$routeChangeStart', function(next, current) { console.log("on:$routeChangeStart"); });
 	$scope.$on('$locationChangeSuccess', function(next, current) { console.log("on:$locationChangeSuccess"); });
@@ -115,7 +122,9 @@ templateCtrl.controller('CpmCtrl_login', ['$scope', '$route', '$location', 'requ
 
 		if(isValid) {
 			//http call
-			$location.path("/dashboard")
+			localStorageService.remove('loginYn');
+    		localStorageService.set('loginYn',"OK");
+			$location.path("/dashboard");
 		}
 	};
 
