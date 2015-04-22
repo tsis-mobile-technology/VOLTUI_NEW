@@ -16,6 +16,15 @@ $provide.value("$locale", {
       "Dydd Gwener",
       "Dydd Sadwrn"
     ],
+    "ERANAMES": [
+      "Cyn Crist",
+      "Oed Crist"
+    ],
+    "ERAS": [
+      "CC",
+      "OC"
+    ],
+    "FIRSTDAYOFWEEK": 0,
     "MONTH": [
       "Ionawr",
       "Chwefror",
@@ -53,13 +62,17 @@ $provide.value("$locale", {
       "Tach",
       "Rhag"
     ],
+    "WEEKENDRANGE": [
+      5,
+      6
+    ],
     "fullDate": "EEEE, d MMMM y",
     "longDate": "d MMMM y",
     "medium": "d MMM y HH:mm:ss",
     "mediumDate": "d MMM y",
     "mediumTime": "HH:mm:ss",
-    "short": "dd/MM/y HH:mm",
-    "shortDate": "dd/MM/y",
+    "short": "dd/MM/yy HH:mm",
+    "shortDate": "dd/MM/yy",
     "shortTime": "HH:mm"
   },
   "NUMBER_FORMATS": {

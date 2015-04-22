@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/v1.3.x/src/ng/directive/input.js?message=docs(ngModel)%3A%20describe%20your%20change...#L2279' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/v1.4.x/src/ng/directive/ngModel.js?message=docs(ngModel)%3A%20describe%20your%20change...#L840' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/v1.3.3/src/ng/directive/input.js#L2279' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/v1.4.0-rc.0/src/ng/directive/ngModel.js#L840' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -126,12 +126,12 @@ that has been rendered as invalid after it has been validated:</p>
   <h2 id="example">Example</h2><p>
 
 <div>
-  <a ng-click="openPlunkr('examples/example-example59')" class="btn pull-right">
+  <a ng-click="openPlunkr('examples/example-example86', $event)" class="btn pull-right">
     <i class="glyphicon glyphicon-edit">&nbsp;</i>
     Edit in Plunker</a>
 
   <div class="runnable-example"
-      path="examples/example-example59"
+      path="examples/example-example86"
       deps="angular-animate.js"
       animations="true"
       fixBase="true"
@@ -146,7 +146,7 @@ that has been rendered as invalid after it has been validated:</p>
     </div>
   
 
-    <iframe class="runnable-example-frame" src="examples/example-example59/index.html" name="example-example59"></iframe>
+    <iframe class="runnable-example-frame" src="examples/example-example86/index.html" name="example-example86"></iframe>
   </div>
 </div>
 
@@ -156,7 +156,7 @@ that has been rendered as invalid after it has been validated:</p>
 <p>Sometimes it&#39;s helpful to bind <code>ngModel</code> to a getter/setter function.  A getter/setter is a
 function that returns a representation of the model when called with zero arguments, and sets
 the internal state of a model when called with an argument. It&#39;s sometimes useful to use this
-for models that have an internal representation that&#39;s different than what the model exposes
+for models that have an internal representation that&#39;s different from what the model exposes
 to the view.</p>
 <div class="alert alert-success">
 <strong>Best Practice:</strong> It&#39;s best to keep getters fast because Angular is likely to call them more
@@ -171,7 +171,7 @@ a <code>&lt;form&gt;</code>, which will enable this behavior for all <code>&lt;i
 <p>
 
 <div>
-  <a ng-click="openPlunkr('examples/example-ngModel-getter-setter')" class="btn pull-right">
+  <a ng-click="openPlunkr('examples/example-ngModel-getter-setter', $event)" class="btn pull-right">
     <i class="glyphicon glyphicon-edit">&nbsp;</i>
     Edit in Plunker</a>
 
@@ -192,7 +192,7 @@ a <code>&lt;form&gt;</code>, which will enable this behavior for all <code>&lt;i
       name="app.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;getterSetterExample&#39;, [])&#10;  .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;    var _name = &#39;Brian&#39;;&#10;    $scope.user = {&#10;      name: function(newName) {&#10;        if (angular.isDefined(newName)) {&#10;          _name = newName;&#10;        }&#10;        return _name;&#10;      }&#10;    };&#10;  }]);</code></pre>
+      <pre><code>angular.module(&#39;getterSetterExample&#39;, [])&#10;.controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  var _name = &#39;Brian&#39;;&#10;  $scope.user = {&#10;    name: function(newName) {&#10;      if (angular.isDefined(newName)) {&#10;        _name = newName;&#10;      }&#10;      return _name;&#10;    }&#10;  };&#10;}]);</code></pre>
     </div>
   
 

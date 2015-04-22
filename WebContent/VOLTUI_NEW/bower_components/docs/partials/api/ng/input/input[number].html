@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/v1.3.x/src/ng/directive/input.js?message=docs(input[number])%3A%20describe%20your%20change...#L571' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/v1.4.x/src/ng/directive/input.js?message=docs(input[number])%3A%20describe%20your%20change...#L582' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/v1.3.3/src/ng/directive/input.js#L571' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/v1.4.0-rc.0/src/ng/directive/input.js#L582' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -22,8 +22,11 @@
 <div class="api-profile-description">
   <p>Text input with number validation and transformation. Sets the <code>number</code> validation
 error if not a valid number.</p>
-<p>The model must always be a number, otherwise Angular will throw an error.</p>
-
+<div class="alert alert-warning">
+The model must always be of type <code>number</code> otherwise Angular will throw an error.
+Be aware that a string containing a number is not enough. See the <a href="error/ngModel/numfmt"><code>numfmt</code></a>
+error docs for more information and an example of how to convert your model if necessary.
+</div>
 </div>
 
 
@@ -182,7 +185,8 @@ error if not a valid number.</p>
       </td>
       <td>
         <p>Sets <code>maxlength</code> validation error key if the value is longer than
-   maxlength.</p>
+   maxlength. Setting the attribute to a negative or non-numeric value, allows view values of
+   any length.</p>
 
         
       </td>
@@ -254,7 +258,7 @@ error if not a valid number.</p>
   <h2 id="example">Example</h2><p>
 
 <div>
-  <a ng-click="openPlunkr('examples/example-number-input-directive')" class="btn pull-right">
+  <a ng-click="openPlunkr('examples/example-number-input-directive', $event)" class="btn pull-right">
     <i class="glyphicon glyphicon-edit">&nbsp;</i>
     Edit in Plunker</a>
 
@@ -268,14 +272,14 @@ error if not a valid number.</p>
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;script&gt;&#10;  angular.module(&#39;numberExample&#39;, [])&#10;    .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;      $scope.value = 12;&#10;    }]);&#10;&lt;/script&gt;&#10;&lt;form name=&quot;myForm&quot; ng-controller=&quot;ExampleController&quot;&gt;&#10;  Number: &lt;input type=&quot;number&quot; name=&quot;input&quot; ng-model=&quot;value&quot;&#10;                 min=&quot;0&quot; max=&quot;99&quot; required&gt;&#10;  &lt;span class=&quot;error&quot; ng-show=&quot;myForm.input.$error.required&quot;&gt;&#10;    Required!&lt;/span&gt;&#10;  &lt;span class=&quot;error&quot; ng-show=&quot;myForm.input.$error.number&quot;&gt;&#10;    Not valid number!&lt;/span&gt;&#10;  &lt;tt&gt;value = {{value}}&lt;/tt&gt;&lt;br/&gt;&#10;  &lt;tt&gt;myForm.input.$valid = {{myForm.input.$valid}}&lt;/tt&gt;&lt;br/&gt;&#10;  &lt;tt&gt;myForm.input.$error = {{myForm.input.$error}}&lt;/tt&gt;&lt;br/&gt;&#10;  &lt;tt&gt;myForm.$valid = {{myForm.$valid}}&lt;/tt&gt;&lt;br/&gt;&#10;  &lt;tt&gt;myForm.$error.required = {{!!myForm.$error.required}}&lt;/tt&gt;&lt;br/&gt;&#10; &lt;/form&gt;</code></pre>
+      <pre><code>&lt;script&gt;&#10;  angular.module(&#39;numberExample&#39;, [])&#10;    .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;      $scope.example = {&#10;        value: 12&#10;      };&#10;    }]);&#10;&lt;/script&gt;&#10;&lt;form name=&quot;myForm&quot; ng-controller=&quot;ExampleController&quot;&gt;&#10;  Number: &lt;input type=&quot;number&quot; name=&quot;input&quot; ng-model=&quot;example.value&quot;&#10;                 min=&quot;0&quot; max=&quot;99&quot; required&gt;&#10;  &lt;span class=&quot;error&quot; ng-show=&quot;myForm.input.$error.required&quot;&gt;&#10;    Required!&lt;/span&gt;&#10;  &lt;span class=&quot;error&quot; ng-show=&quot;myForm.input.$error.number&quot;&gt;&#10;    Not valid number!&lt;/span&gt;&#10;  &lt;tt&gt;value = {{example.value}}&lt;/tt&gt;&lt;br/&gt;&#10;  &lt;tt&gt;myForm.input.$valid = {{myForm.input.$valid}}&lt;/tt&gt;&lt;br/&gt;&#10;  &lt;tt&gt;myForm.input.$error = {{myForm.input.$error}}&lt;/tt&gt;&lt;br/&gt;&#10;  &lt;tt&gt;myForm.$valid = {{myForm.$valid}}&lt;/tt&gt;&lt;br/&gt;&#10;  &lt;tt&gt;myForm.$error.required = {{!!myForm.$error.required}}&lt;/tt&gt;&lt;br/&gt;&#10; &lt;/form&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 
       name="protractor.js"
       type="protractor"
       language="js">
-      <pre><code>var value = element(by.binding(&#39;value&#39;));&#10;var valid = element(by.binding(&#39;myForm.input.$valid&#39;));&#10;var input = element(by.model(&#39;value&#39;));&#10;&#10;it(&#39;should initialize to model&#39;, function() {&#10;  expect(value.getText()).toContain(&#39;12&#39;);&#10;  expect(valid.getText()).toContain(&#39;true&#39;);&#10;});&#10;&#10;it(&#39;should be invalid if empty&#39;, function() {&#10;  input.clear();&#10;  input.sendKeys(&#39;&#39;);&#10;  expect(value.getText()).toEqual(&#39;value =&#39;);&#10;  expect(valid.getText()).toContain(&#39;false&#39;);&#10;});&#10;&#10;it(&#39;should be invalid if over max&#39;, function() {&#10;  input.clear();&#10;  input.sendKeys(&#39;123&#39;);&#10;  expect(value.getText()).toEqual(&#39;value =&#39;);&#10;  expect(valid.getText()).toContain(&#39;false&#39;);&#10;});</code></pre>
+      <pre><code>var value = element(by.binding(&#39;example.value&#39;));&#10;var valid = element(by.binding(&#39;myForm.input.$valid&#39;));&#10;var input = element(by.model(&#39;example.value&#39;));&#10;&#10;it(&#39;should initialize to model&#39;, function() {&#10;  expect(value.getText()).toContain(&#39;12&#39;);&#10;  expect(valid.getText()).toContain(&#39;true&#39;);&#10;});&#10;&#10;it(&#39;should be invalid if empty&#39;, function() {&#10;  input.clear();&#10;  input.sendKeys(&#39;&#39;);&#10;  expect(value.getText()).toEqual(&#39;value =&#39;);&#10;  expect(valid.getText()).toContain(&#39;false&#39;);&#10;});&#10;&#10;it(&#39;should be invalid if over max&#39;, function() {&#10;  input.clear();&#10;  input.sendKeys(&#39;123&#39;);&#10;  expect(value.getText()).toEqual(&#39;value =&#39;);&#10;  expect(valid.getText()).toContain(&#39;false&#39;);&#10;});</code></pre>
     </div>
   
 

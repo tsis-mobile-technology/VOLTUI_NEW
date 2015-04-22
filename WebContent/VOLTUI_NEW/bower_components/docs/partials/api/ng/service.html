@@ -13,18 +13,19 @@
       
       <tr>
         <td><a href="api/ng/service/$anchorScroll">$anchorScroll</a></td>
-        <td><p>When called, it checks the current value of <a href="api/ng/service/$location#hash">$location.hash()</a> and
-scrolls to the related element, according to the rules specified in the
-<a href="http://dev.w3.org/html5/spec/Overview.html#the-indicated-part-of-the-document">Html5 spec</a>.</p>
+        <td><p>When called, it scrolls to the element related to the specified <code>hash</code> or (if omitted) to the
+current value of <a href="api/ng/service/$location#hash">$location.hash()</a>, according to the rules specified
+in the
+<a href="http://dev.w3.org/html5/spec/Overview.html#the-indicated-part-of-the-document">HTML5 spec</a>.</p>
 </td>
       </tr>
       
       <tr>
         <td><a href="api/ng/service/$animate">$animate</a></td>
-        <td><p>The $animate service provides rudimentary DOM manipulation functions to
-insert, remove and move elements within the DOM, as well as adding and removing classes.
-This service is the core service used by the ngAnimate $animator service which provides
-high-level animation hooks for CSS and JavaScript.</p>
+        <td><p>The $animate service exposes a series of DOM utility methods that provide support
+for animation hooks. The default behavior is the application of DOM operations, however,
+when an animation is detected (and animations are enabled), $animate will do the heavy lifting
+to ensure that animation runs with the triggered DOM operation.</p>
 </td>
       </tr>
       
@@ -73,6 +74,25 @@ the browser console.</p>
       <tr>
         <td><a href="api/ng/service/$filter">$filter</a></td>
         <td><p>Filters are used for formatting data displayed to the user.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ng/service/$httpParamSerializer">$httpParamSerializer</a></td>
+        <td><p>Default $http params serializer that converts objects to a part of a request URL
+according to the following rules:</p>
+<ul>
+<li><code>{&#39;foo&#39;: &#39;bar&#39;}</code> results in <code>foo=bar</code></li>
+<li><code>{&#39;foo&#39;: Date.now()}</code> results in <code>foo=2015-04-01T09%3A50%3A49.262Z</code> (<code>toISOString()</code> and encoded representation of a Date object)</li>
+<li><code>{&#39;foo&#39;: [&#39;bar&#39;, &#39;baz&#39;]}</code> results in <code>foo=bar&amp;foo=baz</code> (repeated key for each array element)</li>
+<li><code>{&#39;foo&#39;: {&#39;bar&#39;:&#39;baz&#39;}}</code> results in <code>foo=%7B%22bar%22%3A%22baz%22%7D&quot;</code> (stringified and encoded representation of an object)</li>
+</ul>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ng/service/$httpParamSerializerJQLike">$httpParamSerializerJQLike</a></td>
+        <td><p>Alternative $http params serializer that follows jQuerys <code>param()</code> method {<a href="http://api.jquery.com/jquery.param/}">http://api.jquery.com/jquery.param/}</a> logic.</p>
 </td>
       </tr>
       
@@ -146,9 +166,9 @@ when they are done processing.</p>
       <tr>
         <td><a href="api/ng/service/$rootElement">$rootElement</a></td>
         <td><p>The root element of Angular application. This is either the element where <a href="api/ng/directive/ngApp">ngApp</a> was declared or the element passed into
-<a href="api/ng/function/angular.bootstrap"><code>angular.bootstrap</code></a>. The element represent the root element of application. It is also the
-location where the applications <a href="api/auto/service/$injector">$injector</a> service gets
-published, it can be retrieved using <code>$rootElement.injector()</code>.</p>
+<a href="api/ng/function/angular.bootstrap"><code>angular.bootstrap</code></a>. The element represents the root element of application. It is also the
+location where the application&#39;s <a href="api/auto/service/$injector">$injector</a> service gets
+published, and can be retrieved using <code>$rootElement.injector()</code>.</p>
 </td>
       </tr>
       
@@ -179,7 +199,7 @@ Contextual Escaping (SCE)</a> services to AngularJS.</p>
         <td><a href="api/ng/service/$templateRequest">$templateRequest</a></td>
         <td><p>The <code>$templateRequest</code> service downloads the provided template using <code>$http</code> and, upon success,
 stores the contents inside of <code>$templateCache</code>. If the HTTP request fails or the response data
-of the HTTP request is empty then a <code>$compile</code> error will be thrown (the exception can be thwarted
+of the HTTP request is empty, a <code>$compile</code> error will be thrown (the exception can be thwarted
 by setting the 2nd parameter of the function to true).</p>
 </td>
       </tr>

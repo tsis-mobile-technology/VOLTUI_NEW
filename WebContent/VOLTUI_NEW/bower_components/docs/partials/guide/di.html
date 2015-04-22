@@ -1,4 +1,4 @@
-<a href='https://github.com/angular/angular.js/edit/v1.3.x/docs/content/guide/di.ngdoc?message=docs(guide%2FDependency Injection)%3A%20describe%20your%20change...' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/v1.4.x/docs/content/guide/di.ngdoc?message=docs(guide%2FDependency Injection)%3A%20describe%20your%20change...' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 <h1 id="dependency-injection">Dependency Injection</h1>
@@ -59,11 +59,11 @@ above.</p>
 application behavior that supports the declarative markup in the template. The recommended way of
 declaring Controllers is using the array notation:</p>
 <pre><code class="lang-js">someModule.controller(&#39;MyController&#39;, [&#39;$scope&#39;, &#39;dep1&#39;, &#39;dep2&#39;, function($scope, dep1, dep2) {
-...
-$scope.aMethod = function() {
   ...
-}
-...
+  $scope.aMethod = function() {
+    ...
+  }
+  ...
 }]);
 </code></pre>
 <p>Unlike services, there can be many instances of the same type of controller in an application.</p>
@@ -90,7 +90,7 @@ the function. There are three ways of annotating your code with service name inf
 documentation are written.</p>
 <p>For example:</p>
 <pre><code class="lang-js">someModule.controller(&#39;MyController&#39;, [&#39;$scope&#39;, &#39;greeter&#39;, function($scope, greeter) {
-// ...
+  // ...
 }]);
 </code></pre>
 <p>Here we pass an array whose elements consist of a list of strings (the names of the dependencies)
@@ -102,7 +102,7 @@ parameters in the function declaration.</p>
 the function needs to be annotated with the <code>$inject</code> property. The <code>$inject</code> property is an array
 of service names to inject.</p>
 <pre><code class="lang-js">var MyController = function($scope, greeter) {
-// ...
+  // ...
 }
 MyController.$inject = [&#39;$scope&#39;, &#39;greeter&#39;];
 someModule.controller(&#39;MyController&#39;, MyController);
@@ -120,7 +120,7 @@ your code, your service names will get renamed and break your app.
 <p>The simplest way to get hold of the dependencies is to assume that the function parameter names
 are the names of the dependencies.</p>
 <pre><code class="lang-js">someModule.controller(&#39;MyController&#39;, function($scope, greeter) {
-// ...
+  // ...
 });
 </code></pre>
 <p>Given a function the injector can infer the names of the services to inject by examining the
@@ -160,7 +160,7 @@ ensure that all of your application components have annotations.</p>
 <p>If you&#39;re using manual bootstrapping, you can also use strict DI by providing <code>strictDi: true</code> in
 the optional config argument:</p>
 <pre><code class="lang-js">angular.bootstrap(document, [&#39;myApp&#39;], {
-strictDi: true
+  strictDi: true
 });
 </code></pre>
 <h2 id="why-dependency-injection-">Why Dependency Injection?</h2>
@@ -182,11 +182,11 @@ dependencies for test isolation.</p>
 <p>The third option is the most viable, since it removes the responsibility of locating the
 dependency from the component. The dependency is simply handed to the component.</p>
 <pre><code class="lang-js">function SomeClass(greeter) {
-this.greeter = greeter;
+  this.greeter = greeter;
 }
 
 SomeClass.prototype.doSomething = function(name) {
-this.greeter.greet(name);
+  this.greeter.greet(name);
 }
 </code></pre>
 <p>In the above example <code>SomeClass</code> is not concerned with creating or locating the <code>greeter</code>
@@ -204,11 +204,11 @@ var myModule = angular.module(&#39;myModule&#39;, []);
 <p>Teach the injector how to build a <code>greeter</code> service. Notice that <code>greeter</code> is dependent on the
 <code>$window</code> service. The <code>greeter</code> service is an object that contains a <code>greet</code> method.</p>
 <pre><code class="lang-js">myModule.factory(&#39;greeter&#39;, function($window) {
-return {
-  greet: function(text) {
-    $window.alert(text);
-  }
-};
+  return {
+    greet: function(text) {
+      $window.alert(text);
+    }
+  };
 });
 </code></pre>
 <p>Create a new injector that can provide components defined in our <code>myModule</code> module and request our
@@ -222,13 +222,13 @@ to be passed throughout the application. Passing the injector breaks the
 notation in our HTML templates, to hand the responsibility of creating components over to the
 injector, as in this example:</p>
 <pre><code class="lang-html">&lt;div ng-controller=&quot;MyController&quot;&gt;
-&lt;button ng-click=&quot;sayHello()&quot;&gt;Hello&lt;/button&gt;
+  &lt;button ng-click=&quot;sayHello()&quot;&gt;Hello&lt;/button&gt;
 &lt;/div&gt;
 </code></pre>
 <pre><code class="lang-js">function MyController($scope, greeter) {
-$scope.sayHello = function() {
-  greeter.greet(&#39;Hello World&#39;);
-};
+  $scope.sayHello = function() {
+    greeter.greet(&#39;Hello World&#39;);
+  };
 }
 </code></pre>
 <p>When Angular compiles the HTML, it processes the <code>ng-controller</code> directive, which in turn

@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/v1.3.x/src/ng/http.js?message=docs($httpProvider)%3A%20describe%20your%20change...#L101' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/v1.4.x/src/ng/http.js?message=docs($httpProvider)%3A%20describe%20your%20change...#L182' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/v1.3.3/src/ng/http.js#L101' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/v1.4.0-rc.0/src/ng/http.js#L182' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -49,7 +49,7 @@
 the same time via <a href="api/ng/type/$rootScope.Scope#$applyAsync">$rootScope.$applyAsync</a>. This can result in
 significant performance improvement for bigger applications that make many HTTP requests
 concurrently (common during application bootstrap).</p>
-<p>Defaults to false. If no value is specifed, returns the current configured value.</p>
+<p>Defaults to false. If no value is specified, returns the current configured value.</p>
 </div>
 
     
@@ -115,6 +115,11 @@ concurrently (common during application bootstrap).</p>
     <td></td>
     <td><p>Object containing default values for all <a href="api/ng/service/$http">$http</a> requests.</p>
 <ul>
+<li><p><strong><code>defaults.cache</code></strong> - {Object} - an object built with <a href="api/ng/service/$cacheFactory"><code>$cacheFactory</code></a>
+that will provide the cache for all requests who set their <code>cache</code> property to <code>true</code>.
+If you set the <code>default.cache = false</code> then only requests that specify their own custom
+cache object will be cached. See <a href="api/ng/service/$http#caching">$http Caching</a> for more information.</p>
+</li>
 <li><p><strong><code>defaults.xsrfCookieName</code></strong> - {string} - Name of cookie containing the XSRF token.
 Defaults value is <code>&#39;XSRF-TOKEN&#39;</code>.</p>
 </li>
@@ -130,6 +135,11 @@ setting default headers.</p>
 <li><strong><code>defaults.headers.put</code></strong></li>
 <li><strong><code>defaults.headers.patch</code></strong></li>
 </ul>
+</li>
+<li><p><strong><code>defaults.paramSerializer</code></strong> - {string|function(Object<string,string>):string} - A function used to prepare string representation
+of request parameters (specified as an object).
+Is specified as string, it is interpreted as function registered in with the {$injector}.
+Defaults to {$httpParamSerializer}.</p>
 </li>
 </ul>
 </td>

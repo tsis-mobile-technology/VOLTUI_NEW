@@ -5,8 +5,8 @@ describe("", function() {
     browser.get("build/docs/examples/example-example62/index-jquery.html");
   });
   
-  it('should check ng-bind-html', function() {
-    expect(element(by.binding('myHTML')).getText()).toBe(
-        'I am an HTMLstring with links! and other stuff');
-  });
+it('should check ng-bind-html', function() {
+  expect(element(by.binding('myHTML')).getText()).toBe(
+      'I am an HTMLstring with links! and other stuff');
+});
 });

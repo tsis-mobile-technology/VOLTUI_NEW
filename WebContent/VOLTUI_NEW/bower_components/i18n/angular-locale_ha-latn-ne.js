@@ -31,9 +31,18 @@ $provide.value("$locale", {
       "Talata",
       "Laraba",
       "Alhamis",
-      "Jumma'a",
+      "Jumma\u02bca",
       "Asabar"
     ],
+    "ERANAMES": [
+      "Kafin haihuwar annab",
+      "Bayan haihuwar annab"
+    ],
+    "ERAS": [
+      "KHAI",
+      "BHAI"
+    ],
+    "FIRSTDAYOFWEEK": 0,
     "MONTH": [
       "Janairu",
       "Faburairu",
@@ -70,6 +79,10 @@ $provide.value("$locale", {
       "Okt",
       "Nuw",
       "Dis"
+    ],
+    "WEEKENDRANGE": [
+      5,
+      6
     ],
     "fullDate": "EEEE, d MMMM, y",
     "longDate": "d MMMM, y",

@@ -5,13 +5,13 @@ describe("", function() {
     browser.get("build/docs/examples/example-ngValue-directive/index.html");
   });
   
-  var favorite = element(by.binding('my.favorite'));
+var favorite = element(by.binding('my.favorite'));
 
-  it('should initialize to model', function() {
-    expect(favorite.getText()).toContain('unicorns');
-  });
-  it('should bind the values to the inputs', function() {
-    element.all(by.model('my.favorite')).get(0).click();
-    expect(favorite.getText()).toContain('pizza');
-  });
+it('should initialize to model', function() {
+  expect(favorite.getText()).toContain('unicorns');
+});
+it('should bind the values to the inputs', function() {
+  element.all(by.model('my.favorite')).get(0).click();
+  expect(favorite.getText()).toContain('pizza');
+});
 });

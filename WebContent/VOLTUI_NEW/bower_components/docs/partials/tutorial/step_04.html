@@ -1,4 +1,4 @@
-<a href='https://github.com/angular/angular.js/edit/v1.3.x/docs/content/tutorial/step_04.ngdoc?message=docs(tutorial%2F4 - Two-way Data Binding)%3A%20describe%20your%20change...' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/v1.4.x/docs/content/tutorial/step_04.ngdoc?message=docs(tutorial%2F4 - Two-way Data Binding)%3A%20describe%20your%20change...' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 <ul doc-tutorial-nav="4"></ul>
@@ -89,25 +89,25 @@ the unit test first.</p>
 <p><strong><code>test/unit/controllersSpec.js</code>:</strong></p>
 <pre><code class="lang-js">describe(&#39;PhoneCat controllers&#39;, function() {
 
-describe(&#39;PhoneListCtrl&#39;, function(){
-  var scope, ctrl;
+  describe(&#39;PhoneListCtrl&#39;, function(){
+    var scope, ctrl;
 
-  beforeEach(module(&#39;phonecatApp&#39;));
+    beforeEach(module(&#39;phonecatApp&#39;));
 
-  beforeEach(inject(function($controller) {
-    scope = {};
-    ctrl = $controller(&#39;PhoneListCtrl&#39;, {$scope:scope});
-  }));
+    beforeEach(inject(function($controller) {
+      scope = {};
+      ctrl = $controller(&#39;PhoneListCtrl&#39;, {$scope:scope});
+    }));
 
-  it(&#39;should create &quot;phones&quot; model with 3 phones&#39;, function() {
-    expect(scope.phones.length).toBe(3);
+    it(&#39;should create &quot;phones&quot; model with 3 phones&#39;, function() {
+      expect(scope.phones.length).toBe(3);
+    });
+
+
+    it(&#39;should set the default value of orderProp model&#39;, function() {
+      expect(scope.orderProp).toBe(&#39;age&#39;);
+    });
   });
-
-
-  it(&#39;should set the default value of orderProp model&#39;, function() {
-    expect(scope.orderProp).toBe(&#39;age&#39;);
-  });
-});
 });
 </code></pre>
 <p>The unit test now verifies that the default ordering property is set.</p>

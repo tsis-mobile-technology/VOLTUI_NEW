@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/v1.3.x/src/Angular.js?message=docs(angular.toJson)%3A%20describe%20your%20change...#L956' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/v1.4.x/src/Angular.js?message=docs(angular.toJson)%3A%20describe%20your%20change...#L1073' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/v1.3.3/src/Angular.js#L956' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/v1.4.0-rc.0/src/Angular.js#L1073' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -35,7 +35,7 @@ stripped since angular uses this notation internally.</p>
 
   <h2 id="usage">Usage</h2>
     
-      <p><code>angular.toJson(obj, [pretty]);</code></p>
+      <p><code>angular.toJson(obj, pretty);</code></p>
 
 
     
@@ -77,12 +77,13 @@ stripped since angular uses this notation internally.</p>
         <div><em>(optional)</em></div>
       </td>
       <td>
-        <a href="" class="label type-hint type-hint-boolean">boolean</a>
+        <a href="" class="label type-hint type-hint-boolean">boolean</a><a href="" class="label type-hint type-hint-number">number</a>
       </td>
       <td>
-        <p>If set to true, the JSON output will contain newlines and whitespace.</p>
+        <p>If set to true, the JSON output will contain newlines and whitespace.
+   If set to an integer, the JSON output will contain that many spaces per indentation.</p>
 
-        
+        <p><em>(default: 2)</em></p>
       </td>
     </tr>
     

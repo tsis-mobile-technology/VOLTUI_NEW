@@ -1,4 +1,4 @@
-<a href='https://github.com/angular/angular.js/edit/v1.3.x/src/Angular.js?message=docs(ng)%3A%20describe%20your%20change...#L95' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/v1.4.x/src/Angular.js?message=docs(ng)%3A%20describe%20your%20change...#L100' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 <h1>
@@ -50,8 +50,15 @@ array element index and obj is the <code>obj</code> itself. Specifying a <code>c
         <td><a href="api/ng/function/angular.extend">angular.extend</a></td>
         <td><p>Extends the destination object <code>dst</code> by copying own enumerable properties from the <code>src</code> object(s)
 to <code>dst</code>. You can specify multiple <code>src</code> objects. If you want to preserve original objects, you can do so
-by passing an empty object as the target: <code>var object = angular.extend({}, object1, object2)</code>.
-Note: Keep in mind that <code>angular.extend</code> does not support recursive merge (deep copy).</p>
+by passing an empty object as the target: <code>var object = angular.extend({}, object1, object2)</code>.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ng/function/angular.merge">angular.merge</a></td>
+        <td><p>Deeply extends the destination object <code>dst</code> by copying own enumerable properties from the <code>src</code> object(s)
+to <code>dst</code>. You can specify multiple <code>src</code> objects. If you want to preserve original objects, you can do so
+by passing an empty object as the target: <code>var object = angular.merge({}, object1, object2)</code>.</p>
 </td>
       </tr>
       
@@ -211,6 +218,14 @@ registered using this mechanism.</p>
       </tr>
       
       <tr>
+        <td><a href="api/ng/directive/ngJq">ngJq</a></td>
+        <td><p>Use this directive to force the angular.element library.  This should be
+used to force either jqLite by leaving ng-jq blank or setting the name of
+the jquery variable under window (eg. jQuery).</p>
+</td>
+      </tr>
+      
+      <tr>
         <td><a href="api/ng/directive/ngApp">ngApp</a></td>
         <td><p>Use this directive to <strong>auto-bootstrap</strong> an AngularJS application. The <code>ngApp</code> directive
 designates the <strong>root element</strong> of the application and is typically placed near the root element
@@ -231,7 +246,8 @@ the href attribute is empty.</p>
 make the link go to the wrong URL if the user clicks it before
 Angular has a chance to replace the <code>{{hash}}</code> markup with its
 value. Until Angular replaces the markup the link will be broken
-and will most likely return a 404 error.</p>
+and will most likely return a 404 error. The <code>ngHref</code> directive
+solves this problem.</p>
 </td>
       </tr>
       
@@ -255,11 +271,8 @@ text <code>{{hash}}</code> until Angular replaces the expression inside
       
       <tr>
         <td><a href="api/ng/directive/ngDisabled">ngDisabled</a></td>
-        <td><p>We shouldn&#39;t do this, because it will make the button enabled on Chrome/Firefox but not on IE8 and older IEs:</p>
-<pre><code class="lang-html">&lt;div ng-init=&quot;scope = { isDisabled: false }&quot;&gt;
-&lt;button disabled=&quot;{{scope.isDisabled}}&quot;&gt;Disabled&lt;/button&gt;
-&lt;/div&gt;
-</code></pre>
+        <td><p>This directive sets the <code>disabled</code> attribute on the element if the
+<a href="guide/expression">expression</a> inside <code>ngDisabled</code> evaluates to truthy.</p>
 </td>
       </tr>
       
@@ -343,43 +356,10 @@ Input control follows HTML5 input types and polyfills the HTML5 validation behav
       </tr>
       
       <tr>
-        <td><a href="api/ng/directive/ngModel">ngModel</a></td>
-        <td><p>The <code>ngModel</code> directive binds an <code>input</code>,<code>select</code>, <code>textarea</code> (or custom form control) to a
-property on the scope using <a href="api/ng/type/ngModel.NgModelController">NgModelController</a>,
-which is created and exposed by this directive.</p>
-</td>
-      </tr>
-      
-      <tr>
-        <td><a href="api/ng/directive/ngChange">ngChange</a></td>
-        <td><p>Evaluate the given expression when the user changes the input.
-The expression is evaluated immediately, unlike the JavaScript onchange event
-which only triggers at the end of a change (usually, when the user leaves the
-form element or presses the return key).</p>
-</td>
-      </tr>
-      
-      <tr>
-        <td><a href="api/ng/directive/ngList">ngList</a></td>
-        <td><p>Text input that converts between a delimited string and an array of strings. The default
-delimiter is a comma followed by a space - equivalent to <code>ng-list=&quot;, &quot;</code>. You can specify a custom
-delimiter as the value of the <code>ngList</code> attribute - for example, <code>ng-list=&quot; | &quot;</code>.</p>
-</td>
-      </tr>
-      
-      <tr>
         <td><a href="api/ng/directive/ngValue">ngValue</a></td>
         <td><p>Binds the given expression to the value of <code>&lt;option&gt;</code> or <a href="api/ng/input/input[radio]"><code>input[radio]</code></a>,
 so that when the element is selected, the <a href="api/ng/directive/ngModel"><code>ngModel</code></a> of that element is set to
 the bound value.</p>
-</td>
-      </tr>
-      
-      <tr>
-        <td><a href="api/ng/directive/ngModelOptions">ngModelOptions</a></td>
-        <td><p>Allows tuning how model updates are done. Using <code>ngModelOptions</code> you can specify a custom list of
-events that will trigger a model update and/or a debouncing delay so that the actual update only
-takes place when a timer expires; this timer will be reset after another change takes place.</p>
 </td>
       </tr>
       
@@ -404,11 +384,19 @@ expressions. This directive is needed since some HTML elements
       
       <tr>
         <td><a href="api/ng/directive/ngBindHtml">ngBindHtml</a></td>
-        <td><p>Creates a binding that will innerHTML the result of evaluating the <code>expression</code> into the current
-element in a secure way.  By default, the innerHTML-ed content will be sanitized using the <a href="api/ngSanitize/service/$sanitize">$sanitize</a> service.  To utilize this functionality, ensure that <code>$sanitize</code>
-is available, for example, by including <a href="api/ngSanitize"><code>ngSanitize</code></a> in your module&#39;s dependencies (not in
-core Angular). In order to use <a href="api/ngSanitize"><code>ngSanitize</code></a> in your module&#39;s dependencies, you need to
-include &quot;angular-sanitize.js&quot; in your application.</p>
+        <td><p>Evaluates the expression and inserts the resulting HTML into the element in a secure way. By default,
+the resulting HTML content will be sanitized using the <a href="api/ngSanitize/service/$sanitize">$sanitize</a> service.
+To utilize this functionality, ensure that <code>$sanitize</code> is available, for example, by including <a href="api/ngSanitize"><code>ngSanitize</code></a> in your module&#39;s dependencies (not in core Angular). In order to use <a href="api/ngSanitize"><code>ngSanitize</code></a>
+in your module&#39;s dependencies, you need to include &quot;angular-sanitize.js&quot; in your application.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ng/directive/ngChange">ngChange</a></td>
+        <td><p>Evaluate the given expression when the user changes the input.
+The expression is evaluated immediately, unlike the JavaScript onchange event
+which only triggers at the end of a change (usually, when the user leaves the
+form element or presses the return key).</p>
 </td>
       </tr>
       
@@ -582,11 +570,43 @@ current scope.</p>
       </tr>
       
       <tr>
+        <td><a href="api/ng/directive/ngList">ngList</a></td>
+        <td><p>Text input that converts between a delimited string and an array of strings. The default
+delimiter is a comma followed by a space - equivalent to <code>ng-list=&quot;, &quot;</code>. You can specify a custom
+delimiter as the value of the <code>ngList</code> attribute - for example, <code>ng-list=&quot; | &quot;</code>.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ng/directive/ngModel">ngModel</a></td>
+        <td><p>The <code>ngModel</code> directive binds an <code>input</code>,<code>select</code>, <code>textarea</code> (or custom form control) to a
+property on the scope using <a href="api/ng/type/ngModel.NgModelController">NgModelController</a>,
+which is created and exposed by this directive.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ng/directive/ngModelOptions">ngModelOptions</a></td>
+        <td><p>Allows tuning how model updates are done. Using <code>ngModelOptions</code> you can specify a custom list of
+events that will trigger a model update and/or a debouncing delay so that the actual update only
+takes place when a timer expires; this timer will be reset after another change takes place.</p>
+</td>
+      </tr>
+      
+      <tr>
         <td><a href="api/ng/directive/ngNonBindable">ngNonBindable</a></td>
         <td><p>The <code>ngNonBindable</code> directive tells Angular not to compile or bind the contents of the current
 DOM element. This is useful if the element contains what appears to be Angular directives and
 bindings but which should be ignored by Angular. This could be the case if you have a site that
 displays snippets of code, for instance.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ng/directive/ngOptions">ngOptions</a></td>
+        <td><p>The <code>ngOptions</code> attribute can be used to dynamically generate a list of <code>&lt;option&gt;</code>
+elements for the <code>&lt;select&gt;</code> element using the array or object obtained by evaluating the
+<code>ngOptions</code> comprehension expression.</p>
 </td>
       </tr>
       
@@ -725,11 +745,22 @@ such as being valid/invalid or dirty/pristine.</p>
       
       <tr>
         <td><a href="api/ng/type/ngModel.NgModelController">ngModel.NgModelController</a></td>
-        <td><p><code>NgModelController</code> provides API for the <code>ng-model</code> directive. The controller contains
-services for data-binding, validation, CSS updates, and value formatting and parsing. It
-purposefully does not contain any logic which deals with DOM rendering or listening to
-DOM events. Such DOM related logic should be provided by other directives which make use of
-<code>NgModelController</code> for data-binding.</p>
+        <td><p><code>NgModelController</code> provides API for the <a href="api/ng/directive/ngModel"><code>ngModel</code></a> directive.
+The controller contains services for data-binding, validation, CSS updates, and value formatting
+and parsing. It purposefully does not contain any logic which deals with DOM rendering or
+listening to DOM events.
+Such DOM related logic should be provided by other directives which make use of
+<code>NgModelController</code> for data-binding to control elements.
+Angular provides this DOM logic for most <a href="api/ng/directive/input"><code>input</code></a> elements.
+At the end of this page you can find a <a href="api/ng/type/ngModel.NgModelController#custom-control-example">custom control example</a> that uses <code>ngModelController</code> to bind to <code>contenteditable</code> elements.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ng/type/select.SelectController">select.SelectController</a></td>
+        <td><p>The controller for the <code>&lt;select&gt;</code> directive. This provides support for reading
+and writing the selected value(s) of the control and also coordinates dynamically
+added <code>&lt;option&gt;</code> elements, perhaps by an <code>ngRepeat</code> directive.</p>
 </td>
       </tr>
       
@@ -763,8 +794,7 @@ compiled HTML template is executed.)</p>
       <tr>
         <td><a href="api/ng/provider/$animateProvider">$animateProvider</a></td>
         <td><p>Default implementation of $animate that doesn&#39;t perform any animations, instead just
-synchronously performs DOM
-updates and calls done() callbacks.</p>
+synchronously performs DOM updates and resolves the returned runner promise.</p>
 </td>
       </tr>
       
@@ -856,18 +886,19 @@ that the URLs used for sourcing Angular templates are safe.  Refer <a href="api/
       
       <tr>
         <td><a href="api/ng/service/$anchorScroll">$anchorScroll</a></td>
-        <td><p>When called, it checks the current value of <a href="api/ng/service/$location#hash">$location.hash()</a> and
-scrolls to the related element, according to the rules specified in the
-<a href="http://dev.w3.org/html5/spec/Overview.html#the-indicated-part-of-the-document">Html5 spec</a>.</p>
+        <td><p>When called, it scrolls to the element related to the specified <code>hash</code> or (if omitted) to the
+current value of <a href="api/ng/service/$location#hash">$location.hash()</a>, according to the rules specified
+in the
+<a href="http://dev.w3.org/html5/spec/Overview.html#the-indicated-part-of-the-document">HTML5 spec</a>.</p>
 </td>
       </tr>
       
       <tr>
         <td><a href="api/ng/service/$animate">$animate</a></td>
-        <td><p>The $animate service provides rudimentary DOM manipulation functions to
-insert, remove and move elements within the DOM, as well as adding and removing classes.
-This service is the core service used by the ngAnimate $animator service which provides
-high-level animation hooks for CSS and JavaScript.</p>
+        <td><p>The $animate service exposes a series of DOM utility methods that provide support
+for animation hooks. The default behavior is the application of DOM operations, however,
+when an animation is detected (and animations are enabled), $animate will do the heavy lifting
+to ensure that animation runs with the triggered DOM operation.</p>
 </td>
       </tr>
       
@@ -916,6 +947,25 @@ the browser console.</p>
       <tr>
         <td><a href="api/ng/service/$filter">$filter</a></td>
         <td><p>Filters are used for formatting data displayed to the user.</p>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ng/service/$httpParamSerializer">$httpParamSerializer</a></td>
+        <td><p>Default $http params serializer that converts objects to a part of a request URL
+according to the following rules:</p>
+<ul>
+<li><code>{&#39;foo&#39;: &#39;bar&#39;}</code> results in <code>foo=bar</code></li>
+<li><code>{&#39;foo&#39;: Date.now()}</code> results in <code>foo=2015-04-01T09%3A50%3A49.262Z</code> (<code>toISOString()</code> and encoded representation of a Date object)</li>
+<li><code>{&#39;foo&#39;: [&#39;bar&#39;, &#39;baz&#39;]}</code> results in <code>foo=bar&amp;foo=baz</code> (repeated key for each array element)</li>
+<li><code>{&#39;foo&#39;: {&#39;bar&#39;:&#39;baz&#39;}}</code> results in <code>foo=%7B%22bar%22%3A%22baz%22%7D&quot;</code> (stringified and encoded representation of an object)</li>
+</ul>
+</td>
+      </tr>
+      
+      <tr>
+        <td><a href="api/ng/service/$httpParamSerializerJQLike">$httpParamSerializerJQLike</a></td>
+        <td><p>Alternative $http params serializer that follows jQuerys <code>param()</code> method {<a href="http://api.jquery.com/jquery.param/}">http://api.jquery.com/jquery.param/}</a> logic.</p>
 </td>
       </tr>
       
@@ -989,9 +1039,9 @@ when they are done processing.</p>
       <tr>
         <td><a href="api/ng/service/$rootElement">$rootElement</a></td>
         <td><p>The root element of Angular application. This is either the element where <a href="api/ng/directive/ngApp">ngApp</a> was declared or the element passed into
-<a href="api/ng/function/angular.bootstrap"><code>angular.bootstrap</code></a>. The element represent the root element of application. It is also the
-location where the applications <a href="api/auto/service/$injector">$injector</a> service gets
-published, it can be retrieved using <code>$rootElement.injector()</code>.</p>
+<a href="api/ng/function/angular.bootstrap"><code>angular.bootstrap</code></a>. The element represents the root element of application. It is also the
+location where the application&#39;s <a href="api/auto/service/$injector">$injector</a> service gets
+published, and can be retrieved using <code>$rootElement.injector()</code>.</p>
 </td>
       </tr>
       
@@ -1022,7 +1072,7 @@ Contextual Escaping (SCE)</a> services to AngularJS.</p>
         <td><a href="api/ng/service/$templateRequest">$templateRequest</a></td>
         <td><p>The <code>$templateRequest</code> service downloads the provided template using <code>$http</code> and, upon success,
 stores the contents inside of <code>$templateCache</code>. If the HTTP request fails or the response data
-of the HTTP request is empty then a <code>$compile</code> error will be thrown (the exception can be thwarted
+of the HTTP request is empty, a <code>$compile</code> error will be thrown (the exception can be thwarted
 by setting the 2nd parameter of the function to true).</p>
 </td>
       </tr>

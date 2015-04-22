@@ -22,7 +22,7 @@ function getVF(n, opt_precision) {
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-      "pre podne",
+      "prije podne",
       "popodne"
     ],
     "DAY": [
@@ -34,6 +34,15 @@ $provide.value("$locale", {
       "petak",
       "subota"
     ],
+    "ERANAMES": [
+      "Prije nove ere",
+      "Nove ere"
+    ],
+    "ERAS": [
+      "p. n. e.",
+      "n. e."
+    ],
+    "FIRSTDAYOFWEEK": 0,
     "MONTH": [
       "januar",
       "februar",
@@ -42,7 +51,7 @@ $provide.value("$locale", {
       "maj",
       "juni",
       "juli",
-      "avgust",
+      "august",
       "septembar",
       "oktobar",
       "novembar",
@@ -65,16 +74,20 @@ $provide.value("$locale", {
       "maj",
       "jun",
       "jul",
-      "avg",
+      "aug",
       "sep",
       "okt",
       "nov",
       "dec"
     ],
+    "WEEKENDRANGE": [
+      5,
+      6
+    ],
     "fullDate": "EEEE, dd. MMMM y.",
     "longDate": "dd. MMMM y.",
-    "medium": "dd.MM.y. HH:mm:ss",
-    "mediumDate": "dd.MM.y.",
+    "medium": "dd. MMM. y. HH:mm:ss",
+    "mediumDate": "dd. MMM. y.",
     "mediumTime": "HH:mm:ss",
     "short": "dd.MM.yy. HH:mm",
     "shortDate": "dd.MM.yy.",
@@ -102,10 +115,10 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-        "negPre": "\u00a4\u00a0-",
-        "negSuf": "",
-        "posPre": "\u00a4\u00a0",
-        "posSuf": ""
+        "negPre": "-",
+        "negSuf": "\u00a0\u00a4",
+        "posPre": "",
+        "posSuf": "\u00a0\u00a4"
       }
     ]
   },

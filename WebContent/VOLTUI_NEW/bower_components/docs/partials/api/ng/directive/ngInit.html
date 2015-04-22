@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/v1.3.x/src/ng/directive/ngInit.js?message=docs(ngInit)%3A%20describe%20your%20change...#L3' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/v1.4.x/src/ng/directive/ngInit.js?message=docs(ngInit)%3A%20describe%20your%20change...#L3' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/v1.3.3/src/ng/directive/ngInit.js#L3' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/v1.4.0-rc.0/src/ng/directive/ngInit.js#L3' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -22,7 +22,7 @@
 <div class="api-profile-description">
   <p>The <code>ngInit</code> directive allows you to evaluate an expression in the
 current scope.</p>
-<div class="alert alert-error">
+<div class="alert alert-danger">
 The only appropriate use of <code>ngInit</code> is for aliasing special properties of
 <a href="api/ng/directive/ngRepeat"><code>ngRepeat</code></a>, as seen in the demo below. Besides this case, you
 should use <a href="guide/controller">controllers</a> rather than <code>ngInit</code>
@@ -32,7 +32,7 @@ to initialize values on a scope.
 <strong>Note</strong>: If you have assignment in <code>ngInit</code> along with <a href="api/ng/service/$filter"><code>$filter</code></a>, make
 sure you have parenthesis for correct precedence:
 <pre class="prettyprint">
-  <div ng-init="test1 = (data | orderBy:'name')"></div>
+<code>&lt;div ng-init=&quot;test1 = (data | orderBy:&#39;name&#39;)&quot;&gt;&lt;/div&gt;</code>
 </pre>
 </div>
 </div>
@@ -104,7 +104,7 @@ sure you have parenthesis for correct precedence:
   <h2 id="example">Example</h2><p>
 
 <div>
-  <a ng-click="openPlunkr('examples/example-example85')" class="btn pull-right">
+  <a ng-click="openPlunkr('examples/example-example85', $event)" class="btn pull-right">
     <i class="glyphicon glyphicon-edit">&nbsp;</i>
     Edit in Plunker</a>
 
@@ -117,7 +117,7 @@ sure you have parenthesis for correct precedence:
       name="index.html"
       language="html"
       type="html">
-      <pre><code>&lt;script&gt;&#10;angular.module(&#39;initExample&#39;, [])&#10;  .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;    $scope.list = [[&#39;a&#39;, &#39;b&#39;], [&#39;c&#39;, &#39;d&#39;]];&#10;  }]);&#10;&lt;/script&gt;&#10;&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;&lt;div ng-repeat=&quot;innerList in list&quot; ng-init=&quot;outerIndex = $index&quot;&gt;&#10;  &lt;div ng-repeat=&quot;value in innerList&quot; ng-init=&quot;innerIndex = $index&quot;&gt;&#10;     &lt;span class=&quot;example-init&quot;&gt;list[ {{outerIndex}} ][ {{innerIndex}} ] = {{value}};&lt;/span&gt;&#10;  &lt;/div&gt;&#10;&lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
+      <pre><code>&lt;script&gt;&#10;  angular.module(&#39;initExample&#39;, [])&#10;    .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;      $scope.list = [[&#39;a&#39;, &#39;b&#39;], [&#39;c&#39;, &#39;d&#39;]];&#10;    }]);&#10;&lt;/script&gt;&#10;&lt;div ng-controller=&quot;ExampleController&quot;&gt;&#10;  &lt;div ng-repeat=&quot;innerList in list&quot; ng-init=&quot;outerIndex = $index&quot;&gt;&#10;    &lt;div ng-repeat=&quot;value in innerList&quot; ng-init=&quot;innerIndex = $index&quot;&gt;&#10;       &lt;span class=&quot;example-init&quot;&gt;list[ {{outerIndex}} ][ {{innerIndex}} ] = {{value}};&lt;/span&gt;&#10;    &lt;/div&gt;&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>
     </div>
   
     <div class="runnable-example-file" 

@@ -1,4 +1,4 @@
-<a href='https://github.com/angular/angular.js/edit/v1.3.x/docs/content/guide/module.ngdoc?message=docs(guide%2FModules)%3A%20describe%20your%20change...' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/v1.4.x/docs/content/guide/module.ngdoc?message=docs(guide%2FModules)%3A%20describe%20your%20change...' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 <h1 id="what-is-a-module-">What is a Module?</h1>
@@ -21,12 +21,12 @@ should be bootstrapped. There are several advantages to this approach:</p>
 <p>
 
 <div>
-  <a ng-click="openPlunkr('examples/example-example39')" class="btn pull-right">
+  <a ng-click="openPlunkr('examples/example-example40', $event)" class="btn pull-right">
     <i class="glyphicon glyphicon-edit">&nbsp;</i>
     Edit in Plunker</a>
 
   <div class="runnable-example"
-      path="examples/example-example39"
+      path="examples/example-example40"
       ng-app-included="true">
 
   
@@ -52,7 +52,7 @@ should be bootstrapped. There are several advantages to this approach:</p>
     </div>
   
 
-    <iframe class="runnable-example-frame" src="examples/example-example39/index.html" name="example-example39"></iframe>
+    <iframe class="runnable-example-frame" src="examples/example-example40/index.html" name="example-example40"></iframe>
   </div>
 </div>
 
@@ -82,12 +82,12 @@ on how we organize large apps at Google.</p>
 <p>
 
 <div>
-  <a ng-click="openPlunkr('examples/example-example40')" class="btn pull-right">
+  <a ng-click="openPlunkr('examples/example-example41', $event)" class="btn pull-right">
     <i class="glyphicon glyphicon-edit">&nbsp;</i>
     Edit in Plunker</a>
 
   <div class="runnable-example"
-      path="examples/example-example40"
+      path="examples/example-example41"
       module="xmpl">
 
   
@@ -113,7 +113,7 @@ on how we organize large apps at Google.</p>
     </div>
   
 
-    <iframe class="runnable-example-frame" src="examples/example-example40/index.html" name="example-example40"></iframe>
+    <iframe class="runnable-example-frame" src="examples/example-example41/index.html" name="example-example41"></iframe>
   </div>
 </div>
 
@@ -149,20 +149,20 @@ run(function(injectables) { // instance-injector
 <p>There are some convenience methods on the module which are equivalent to the <code>config</code> block. For
 example:</p>
 <pre><code class="lang-js">angular.module(&#39;myModule&#39;, []).
-value(&#39;a&#39;, 123).
-factory(&#39;a&#39;, function() { return 123; }).
-directive(&#39;directiveName&#39;, ...).
-filter(&#39;filterName&#39;, ...);
+  value(&#39;a&#39;, 123).
+  factory(&#39;a&#39;, function() { return 123; }).
+  directive(&#39;directiveName&#39;, ...).
+  filter(&#39;filterName&#39;, ...);
 
 // is same as
 
 angular.module(&#39;myModule&#39;, []).
-config(function($provide, $compileProvider, $filterProvider) {
-  $provide.value(&#39;a&#39;, 123);
-  $provide.factory(&#39;a&#39;, function() { return 123; });
-  $compileProvider.directive(&#39;directiveName&#39;, ...);
-  $filterProvider.register(&#39;filterName&#39;, ...);
-});
+  config(function($provide, $compileProvider, $filterProvider) {
+    $provide.value(&#39;a&#39;, 123);
+    $provide.factory(&#39;a&#39;, function() { return 123; });
+    $compileProvider.directive(&#39;directiveName&#39;, ...);
+    $filterProvider.register(&#39;filterName&#39;, ...);
+  });
 </code></pre>
 <div class="alert alert-info">
 When bootstrapping, first Angular applies all constant definitions.
@@ -171,12 +171,12 @@ Then Angular applies configuration blocks in the same order they were registered
 
 <h2 id="run-blocks">Run Blocks</h2>
 <p>Run blocks are the closest thing in Angular to the main method. A run block is the code which
-needs to run to kickstart the application. It is executed after all of the service have been
+needs to run to kickstart the application. It is executed after all of the services have been
 configured and the injector has been created. Run blocks typically contain code which is hard
 to unit-test, and for this reason should be declared in isolated modules, so that they can be
 ignored in the unit-tests.</p>
 <h2 id="dependencies">Dependencies</h2>
-<p>Modules can list other modules as their dependencies. Depending on a module implies that required
+<p>Modules can list other modules as their dependencies. Depending on a module implies that the required
 module needs to be loaded before the requiring module is loaded. In other words the configuration
 blocks of the required modules execute before the configuration blocks of the requiring module.
 The same is true for the run blocks. Each module can only be loaded once, even if multiple other
@@ -229,35 +229,35 @@ factory(&#39;greet&#39;, function(alert, salutation) {
 </code></pre>
 <p>Let&#39;s write some tests to show how to override configuration in tests.</p>
 <pre><code class="lang-js">describe(&#39;myApp&#39;, function() {
-// load application module (`greetMod`) then load a special
-// test module which overrides `$window` with a mock version,
-// so that calling `window.alert()` will not block the test
-// runner with a real alert box.
-beforeEach(module(&#39;greetMod&#39;, function($provide) {
-  $provide.value(&#39;$window&#39;, {
-    alert: jasmine.createSpy(&#39;alert&#39;)
-  });
-}));
+  // load application module (`greetMod`) then load a special
+  // test module which overrides `$window` with a mock version,
+  // so that calling `window.alert()` will not block the test
+  // runner with a real alert box.
+  beforeEach(module(&#39;greetMod&#39;, function($provide) {
+    $provide.value(&#39;$window&#39;, {
+      alert: jasmine.createSpy(&#39;alert&#39;)
+    });
+  }));
 
-// inject() will create the injector and inject the `greet` and
-// `$window` into the tests.
-it(&#39;should alert on $window&#39;, inject(function(greet, $window) {
-  greet(&#39;World&#39;);
-  expect($window.alert).toHaveBeenCalledWith(&#39;Hello World!&#39;);
-}));
-
-// this is another way of overriding configuration in the
-// tests using inline `module` and `inject` methods.
-it(&#39;should alert using the alert service&#39;, function() {
-  var alertSpy = jasmine.createSpy(&#39;alert&#39;);
-  module(function($provide) {
-    $provide.value(&#39;alert&#39;, alertSpy);
-  });
-  inject(function(greet) {
+  // inject() will create the injector and inject the `greet` and
+  // `$window` into the tests.
+  it(&#39;should alert on $window&#39;, inject(function(greet, $window) {
     greet(&#39;World&#39;);
-    expect(alertSpy).toHaveBeenCalledWith(&#39;Hello World!&#39;);
+    expect($window.alert).toHaveBeenCalledWith(&#39;Hello World!&#39;);
+  }));
+
+  // this is another way of overriding configuration in the
+  // tests using inline `module` and `inject` methods.
+  it(&#39;should alert using the alert service&#39;, function() {
+    var alertSpy = jasmine.createSpy(&#39;alert&#39;);
+    module(function($provide) {
+      $provide.value(&#39;alert&#39;, alertSpy);
+    });
+    inject(function(greet) {
+      greet(&#39;World&#39;);
+      expect(alertSpy).toHaveBeenCalledWith(&#39;Hello World!&#39;);
+    });
   });
-});
 });
 </code></pre>
 

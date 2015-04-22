@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/v1.3.x/src/ngRoute/route.js?message=docs($routeProvider)%3A%20describe%20your%20change...#L23' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/v1.4.x/src/ngRoute/route.js?message=docs($routeProvider)%3A%20describe%20your%20change...#L23' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/v1.3.3/src/ngRoute/route.js#L23' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/v1.4.0-rc.0/src/ngRoute/route.js#L23' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -116,8 +116,8 @@
 <li><code>controller</code> – <code>{(string|function()=}</code> – Controller fn that should be associated with
 newly created scope or the name of a <a href="api/ng/type/angular.Module#controller">registered
 controller</a> if passed as a string.</li>
-<li><code>controllerAs</code> – <code>{string=}</code> – A controller alias name. If present the controller will be
-published to scope under the <code>controllerAs</code> name.</li>
+<li><code>controllerAs</code> – <code>{string=}</code> – An identifier name for a reference to the controller.
+If present, the controller will be published to scope under the <code>controllerAs</code> name.</li>
 <li><p><code>template</code> – <code>{string=|function()=}</code> – html template as a string or a function that
 returns an html template as a string which should be used by <a href="api/ngRoute/directive/ngView">ngView</a> or <a href="api/ng/directive/ngInclude">ngInclude</a> directives.
 This property takes precedence over <code>templateUrl</code>.</p>
@@ -269,7 +269,7 @@ If called with a string, the value maps to <code>redirectTo</code>.</p>
   <tr>
     <td></td>
     <td><p>A boolean property indicating if routes defined
-using this provider should be matched using a case sensitive
+using this provider should be matched using a case insensitive
 algorithm. Defaults to <code>false</code>.</p>
 </td>
   </tr>

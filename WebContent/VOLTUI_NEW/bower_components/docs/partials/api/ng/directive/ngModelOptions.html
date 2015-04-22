@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/v1.3.x/src/ng/directive/input.js?message=docs(ngModelOptions)%3A%20describe%20your%20change...#L2870' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/v1.4.x/src/ng/directive/ngModel.js?message=docs(ngModelOptions)%3A%20describe%20your%20change...#L1065' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/v1.3.3/src/ng/directive/input.js#L2870' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/v1.4.0-rc.0/src/ng/directive/ngModel.js#L1065' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -24,7 +24,7 @@
 events that will trigger a model update and/or a debouncing delay so that the actual update only
 takes place when a timer expires; this timer will be reset after another change takes place.</p>
 <p>Given the nature of <code>ngModelOptions</code>, the value displayed inside input fields in the view might
-be different than the value in the actual model. This means that if you update the model you
+be different from the value in the actual model. This means that if you update the model you
 should also invoke <a href="api/ng/type/ngModel.NgModelController"><code>$rollbackViewValue</code></a> on the relevant input field in
 order to make sure it is synchronized with the model and that any debounced action is canceled.</p>
 <p>The easiest way to reference the control&#39;s <a href="api/ng/type/ngModel.NgModelController"><code>$rollbackViewValue</code></a>
@@ -99,8 +99,10 @@ not validate correctly instead of the default behavior of setting the model to u
 <li><code>getterSetter</code>: boolean value which determines whether or not to treat functions bound to
    <code>ngModel</code> as getters/setters.</li>
 <li><code>timezone</code>: Defines the timezone to be used to read/write the <code>Date</code> instance in the model for
-<code>&lt;input type=&quot;date&quot;&gt;</code>, <code>&lt;input type=&quot;time&quot;&gt;</code>, ... . Right now, the only supported value is <code>&#39;UTC&#39;</code>,
-otherwise the default timezone of the browser will be used.</li>
+<code>&lt;input type=&quot;date&quot;&gt;</code>, <code>&lt;input type=&quot;time&quot;&gt;</code>, ... . It understands UTC/GMT and the
+continental US time zone abbreviations, but for general use, use a time zone offset, for
+example, <code>&#39;+0430&#39;</code> (4 hours, 30 minutes east of the Greenwich meridian)
+If not specified, the timezone of the browser will be used.</li>
 </ul>
 
         
@@ -121,7 +123,7 @@ otherwise the default timezone of the browser will be used.</li>
 <p>  
 
 <div>
-  <a ng-click="openPlunkr('examples/example-ngModelOptions-directive-blur')" class="btn pull-right">
+  <a ng-click="openPlunkr('examples/example-ngModelOptions-directive-blur', $event)" class="btn pull-right">
     <i class="glyphicon glyphicon-edit">&nbsp;</i>
     Edit in Plunker</a>
 
@@ -142,7 +144,7 @@ otherwise the default timezone of the browser will be used.</li>
       name="app.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;optionsExample&#39;, [])&#10;  .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;    $scope.user = { name: &#39;say&#39;, data: &#39;&#39; };&#10;&#10;    $scope.cancel = function(e) {&#10;      if (e.keyCode == 27) {&#10;        $scope.userForm.userName.$rollbackViewValue();&#10;      }&#10;    };&#10;  }]);</code></pre>
+      <pre><code>angular.module(&#39;optionsExample&#39;, [])&#10;.controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  $scope.user = { name: &#39;say&#39;, data: &#39;&#39; };&#10;&#10;  $scope.cancel = function(e) {&#10;    if (e.keyCode == 27) {&#10;      $scope.userForm.userName.$rollbackViewValue();&#10;    }&#10;  };&#10;}]);</code></pre>
     </div>
   
     <div class="runnable-example-file" 
@@ -164,7 +166,7 @@ otherwise the default timezone of the browser will be used.</li>
 <p>  
 
 <div>
-  <a ng-click="openPlunkr('examples/example-ngModelOptions-directive-debounce')" class="btn pull-right">
+  <a ng-click="openPlunkr('examples/example-ngModelOptions-directive-debounce', $event)" class="btn pull-right">
     <i class="glyphicon glyphicon-edit">&nbsp;</i>
     Edit in Plunker</a>
 
@@ -185,7 +187,7 @@ otherwise the default timezone of the browser will be used.</li>
       name="app.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;optionsExample&#39;, [])&#10;  .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;    $scope.user = { name: &#39;say&#39; };&#10;  }]);</code></pre>
+      <pre><code>angular.module(&#39;optionsExample&#39;, [])&#10;.controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  $scope.user = { name: &#39;say&#39; };&#10;}]);</code></pre>
     </div>
   
 
@@ -199,7 +201,7 @@ otherwise the default timezone of the browser will be used.</li>
 <p>  
 
 <div>
-  <a ng-click="openPlunkr('examples/example-ngModelOptions-directive-getter-setter')" class="btn pull-right">
+  <a ng-click="openPlunkr('examples/example-ngModelOptions-directive-getter-setter', $event)" class="btn pull-right">
     <i class="glyphicon glyphicon-edit">&nbsp;</i>
     Edit in Plunker</a>
 
@@ -220,7 +222,7 @@ otherwise the default timezone of the browser will be used.</li>
       name="app.js"
       language="js"
       type="js">
-      <pre><code>angular.module(&#39;getterSetterExample&#39;, [])&#10;  .controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;    var _name = &#39;Brian&#39;;&#10;    $scope.user = {&#10;      name: function(newName) {&#10;        return angular.isDefined(newName) ? (_name = newName) : _name;&#10;      }&#10;    };&#10;  }]);</code></pre>
+      <pre><code>angular.module(&#39;getterSetterExample&#39;, [])&#10;.controller(&#39;ExampleController&#39;, [&#39;$scope&#39;, function($scope) {&#10;  var _name = &#39;Brian&#39;;&#10;  $scope.user = {&#10;    name: function(newName) {&#10;      return angular.isDefined(newName) ? (_name = newName) : _name;&#10;    }&#10;  };&#10;}]);</code></pre>
     </div>
   
 

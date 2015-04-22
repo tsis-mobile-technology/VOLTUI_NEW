@@ -1,15 +1,21 @@
-  angular.module('myStatefulFilterApp', [])
-    .filter('decorate', ['decoration', function(decoration) {
-
-      function decorateFilter(input) {
-        return decoration.symbol + input + decoration.symbol;
+(function(angular) {
+  'use strict';
+angular.module('myReverseFilterApp', [])
+  .filter('reverse', function() {
+    return function(input, uppercase) {
+      input = input || '';
+      var out = "";
+      for (var i = 0; i < input.length; i++) {
+        out = input.charAt(i) + out;
       }
-      decorateFilter.$stateful = true;
-
-      return decorateFilter;
-    }])
-    .controller('MyController', ['$scope', 'decoration', function($scope, decoration) {
-      $scope.greeting = 'hello';
-      $scope.decoration = decoration;
-    }])
-    .value('decoration', {symbol: '*'});
+      // conditional based on optional argument
+      if (uppercase) {
+        out = out.toUpperCase();
+      }
+      return out;
+    };
+  })
+  .controller('MyController', ['$scope', function($scope) {
+    $scope.greeting = 'hello';
+  }]);
+})(window.angular);

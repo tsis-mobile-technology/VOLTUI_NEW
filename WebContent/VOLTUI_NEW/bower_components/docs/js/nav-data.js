@@ -116,6 +116,11 @@ angular.module('navData', [])
             "type": "function"
           },
           {
+            "name": "angular.merge",
+            "href": "api/ng/function/angular.merge",
+            "type": "function"
+          },
+          {
             "name": "angular.module",
             "href": "api/ng/function/angular.module",
             "type": "function"
@@ -341,6 +346,11 @@ angular.module('navData', [])
             "type": "directive"
           },
           {
+            "name": "ngJq",
+            "href": "api/ng/directive/ngJq",
+            "type": "directive"
+          },
+          {
             "name": "ngKeydown",
             "href": "api/ng/directive/ngKeydown",
             "type": "directive"
@@ -408,6 +418,11 @@ angular.module('navData', [])
           {
             "name": "ngOpen",
             "href": "api/ng/directive/ngOpen",
+            "type": "directive"
+          },
+          {
+            "name": "ngOptions",
+            "href": "api/ng/directive/ngOptions",
             "type": "directive"
           },
           {
@@ -536,6 +551,11 @@ angular.module('navData', [])
             "type": "type"
           },
           {
+            "name": "select.SelectController",
+            "href": "api/ng/type/select.SelectController",
+            "type": "type"
+          },
+          {
             "name": "provider",
             "type": "section",
             "href": "api/ng/provider"
@@ -658,6 +678,16 @@ angular.module('navData', [])
           {
             "name": "$httpBackend",
             "href": "api/ng/service/$httpBackend",
+            "type": "service"
+          },
+          {
+            "name": "$httpParamSerializer",
+            "href": "api/ng/service/$httpParamSerializer",
+            "type": "service"
+          },
+          {
+            "name": "$httpParamSerializerJQLike",
+            "href": "api/ng/service/$httpParamSerializerJQLike",
             "type": "service"
           },
           {
@@ -815,16 +845,6 @@ angular.module('navData', [])
         "type": "group",
         "navItems": [
           {
-            "name": "provider",
-            "type": "section",
-            "href": "api/ngAnimate/provider"
-          },
-          {
-            "name": "$animateProvider",
-            "href": "api/ngAnimate/provider/$animateProvider",
-            "type": "provider"
-          },
-          {
             "name": "service",
             "type": "section",
             "href": "api/ngAnimate/service"
@@ -832,6 +852,11 @@ angular.module('navData', [])
           {
             "name": "$animate",
             "href": "api/ngAnimate/service/$animate",
+            "type": "service"
+          },
+          {
+            "name": "$animateCss",
+            "href": "api/ngAnimate/service/$animateCss",
             "type": "service"
           }
         ]
@@ -882,6 +907,33 @@ angular.module('navData', [])
             "name": "$cookies",
             "href": "api/ngCookies/service/$cookies",
             "type": "service"
+          },
+          {
+            "name": "provider",
+            "type": "section",
+            "href": "api/ngCookies/provider"
+          },
+          {
+            "name": "$cookiesProvider",
+            "href": "api/ngCookies/provider/$cookiesProvider",
+            "type": "provider"
+          }
+        ]
+      },
+      {
+        "name": "ngMessageFormat",
+        "href": "api/ngMessageFormat",
+        "type": "group",
+        "navItems": [
+          {
+            "name": "service",
+            "type": "section",
+            "href": "api/ngMessageFormat/service"
+          },
+          {
+            "name": "$$messageFormat",
+            "href": "api/ngMessageFormat/service/$$messageFormat",
+            "type": "service"
           }
         ]
       },
@@ -901,8 +953,18 @@ angular.module('navData', [])
             "type": "directive"
           },
           {
+            "name": "ngMessageExp",
+            "href": "api/ngMessages/directive/ngMessageExp",
+            "type": "directive"
+          },
+          {
             "name": "ngMessages",
             "href": "api/ngMessages/directive/ngMessages",
+            "type": "directive"
+          },
+          {
+            "name": "ngMessagesInclude",
+            "href": "api/ngMessages/directive/ngMessagesInclude",
             "type": "directive"
           }
         ]
@@ -936,6 +998,11 @@ angular.module('navData', [])
             "name": "service",
             "type": "section",
             "href": "api/ngMock/service"
+          },
+          {
+            "name": "$controller",
+            "href": "api/ngMock/service/$controller",
+            "type": "service"
           },
           {
             "name": "$exceptionHandler",
@@ -1176,6 +1243,11 @@ angular.module('navData', [])
             "type": "section"
           },
           {
+            "name": "baddir",
+            "href": "error/$compile/baddir",
+            "type": "error"
+          },
+          {
             "name": "ctreq",
             "href": "error/$compile/ctreq",
             "type": "error"
@@ -1191,8 +1263,18 @@ angular.module('navData', [])
             "type": "error"
           },
           {
+            "name": "noctrl",
+            "href": "error/$compile/noctrl",
+            "type": "error"
+          },
+          {
             "name": "nodomevents",
             "href": "error/$compile/nodomevents",
+            "type": "error"
+          },
+          {
+            "name": "noident",
+            "href": "error/$compile/noident",
             "type": "error"
           },
           {
@@ -1226,8 +1308,23 @@ angular.module('navData', [])
             "type": "section"
           },
           {
+            "name": "ctrlfmt",
+            "href": "error/$controller/ctrlfmt",
+            "type": "error"
+          },
+          {
             "name": "noscp",
             "href": "error/$controller/noscp",
+            "type": "error"
+          },
+          {
+            "name": "$http",
+            "href": "error/$http",
+            "type": "section"
+          },
+          {
+            "name": "badreq",
+            "href": "error/$http/badreq",
             "type": "error"
           },
           {
@@ -1281,8 +1378,28 @@ angular.module('navData', [])
             "type": "section"
           },
           {
+            "name": "badexpr",
+            "href": "error/$interpolate/badexpr",
+            "type": "error"
+          },
+          {
+            "name": "dupvalue",
+            "href": "error/$interpolate/dupvalue",
+            "type": "error"
+          },
+          {
             "name": "interr",
             "href": "error/$interpolate/interr",
+            "type": "error"
+          },
+          {
+            "name": "logicbug",
+            "href": "error/$interpolate/logicbug",
+            "type": "error"
+          },
+          {
+            "name": "nochgmustache",
+            "href": "error/$interpolate/nochgmustache",
             "type": "error"
           },
           {
@@ -1291,14 +1408,59 @@ angular.module('navData', [])
             "type": "error"
           },
           {
+            "name": "reqarg",
+            "href": "error/$interpolate/reqarg",
+            "type": "error"
+          },
+          {
+            "name": "reqcomma",
+            "href": "error/$interpolate/reqcomma",
+            "type": "error"
+          },
+          {
+            "name": "reqendbrace",
+            "href": "error/$interpolate/reqendbrace",
+            "type": "error"
+          },
+          {
+            "name": "reqendinterp",
+            "href": "error/$interpolate/reqendinterp",
+            "type": "error"
+          },
+          {
+            "name": "reqopenbrace",
+            "href": "error/$interpolate/reqopenbrace",
+            "type": "error"
+          },
+          {
+            "name": "reqother",
+            "href": "error/$interpolate/reqother",
+            "type": "error"
+          },
+          {
+            "name": "unknarg",
+            "href": "error/$interpolate/unknarg",
+            "type": "error"
+          },
+          {
+            "name": "unsafe",
+            "href": "error/$interpolate/unsafe",
+            "type": "error"
+          },
+          {
+            "name": "untermstr",
+            "href": "error/$interpolate/untermstr",
+            "type": "error"
+          },
+          {
+            "name": "wantstring",
+            "href": "error/$interpolate/wantstring",
+            "type": "error"
+          },
+          {
             "name": "$location",
             "href": "error/$location",
             "type": "section"
-          },
-          {
-            "name": "ihshprfx",
-            "href": "error/$location/ihshprfx",
-            "type": "error"
           },
           {
             "name": "ipthprfx",
@@ -1476,6 +1638,16 @@ angular.module('navData', [])
             "type": "error"
           },
           {
+            "name": "filter",
+            "href": "error/filter",
+            "type": "section"
+          },
+          {
+            "name": "notarray",
+            "href": "error/filter/notarray",
+            "type": "error"
+          },
+          {
             "name": "jqLite",
             "href": "error/jqLite",
             "type": "section"
@@ -1521,8 +1693,18 @@ angular.module('navData', [])
             "type": "error"
           },
           {
+            "name": "cpta",
+            "href": "error/ng/cpta",
+            "type": "error"
+          },
+          {
             "name": "cpws",
             "href": "error/ng/cpws",
+            "type": "error"
+          },
+          {
+            "name": "test",
+            "href": "error/ng/test",
             "type": "error"
           },
           {
@@ -1543,6 +1725,11 @@ angular.module('navData', [])
           {
             "name": "nonassign",
             "href": "error/ngModel/nonassign",
+            "type": "error"
+          },
+          {
+            "name": "numfmt",
+            "href": "error/ngModel/numfmt",
             "type": "error"
           },
           {

@@ -1,8 +1,8 @@
-<a href='https://github.com/angular/angular.js/edit/v1.3.x/src/ng/filter/limitTo.js?message=docs(limitTo)%3A%20describe%20your%20change...#L3' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
+<a href='https://github.com/angular/angular.js/edit/v1.4.x/src/ng/filter/limitTo.js?message=docs(limitTo)%3A%20describe%20your%20change...#L3' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this Doc</a>
 
 
 
-<a href='https://github.com/angular/angular.js/tree/v1.3.3/src/ng/filter/limitTo.js#L3' class='view-source pull-right btn btn-primary'>
+<a href='https://github.com/angular/angular.js/tree/v1.4.0-rc.0/src/ng/filter/limitTo.js#L3' class='view-source pull-right btn btn-primary'>
   <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
@@ -37,11 +37,11 @@ converted to a string.</p>
   <h2>Usage</h2>
   <h3>In HTML Template Binding</h3>
   
-    <pre><code>{{ limitTo_expression | limitTo : limit}}</code></pre>
+    <pre><code>{{ limitTo_expression | limitTo : limit : begin}}</code></pre>
   
 
   <h3>In JavaScript</h3>
-  <pre><code>$filter(&#39;limitTo&#39;)(input, limit)</code></pre>
+  <pre><code>$filter(&#39;limitTo&#39;)(input, limit, begin)</code></pre>
 
   
 <section class="api-section">
@@ -86,7 +86,25 @@ converted to a string.</p>
         <p>The length of the returned array or string. If the <code>limit</code> number
     is positive, <code>limit</code> number of items from the beginning of the source array/string are copied.
     If the number is negative, <code>limit</code> number  of items from the end of the source array/string
-    are copied. The <code>limit</code> will be trimmed if it exceeds <code>array.length</code></p>
+    are copied. The <code>limit</code> will be trimmed if it exceeds <code>array.length</code>. If <code>limit</code> is undefined,
+    the input will be returned unchanged.</p>
+
+        
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        begin
+        
+        <div><em>(optional)</em></div>
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-string">string</a><a href="" class="label type-hint type-hint-number">number</a>
+      </td>
+      <td>
+        <p>Index at which to begin limitation. As a negative index, <code>begin</code>
+    indicates an offset from the end of <code>input</code>. Defaults to <code>0</code>.</p>
 
         
       </td>
@@ -112,12 +130,12 @@ converted to a string.</p>
   <h2 id="example">Example</h2><p>
 
 <div>
-  <a ng-click="openPlunkr('examples/example-example102')" class="btn pull-right">
+  <a ng-click="openPlunkr('examples/example-example103', $event)" class="btn pull-right">
     <i class="glyphicon glyphicon-edit">&nbsp;</i>
     Edit in Plunker</a>
 
   <div class="runnable-example"
-      path="examples/example-example102"
+      path="examples/example-example103"
       module="limitToExample">
 
   
@@ -136,7 +154,7 @@ converted to a string.</p>
     </div>
   
 
-    <iframe class="runnable-example-frame" src="examples/example-example102/index.html" name="example-example102"></iframe>
+    <iframe class="runnable-example-frame" src="examples/example-example103/index.html" name="example-example103"></iframe>
   </div>
 </div>
 
