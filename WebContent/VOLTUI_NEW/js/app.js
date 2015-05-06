@@ -19,10 +19,10 @@ config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/type07', {templateUrl: 'partials/template_type07.html', controller: 'CpmCtrl_type07'});
 	$routeProvider.when('/dashboard',  {templateUrl: 'partials/template_dashboard.html',  controller: 'CpmCtrl_dashboard'});
 	$routeProvider.when('/login',  {templateUrl: 'partials/template_login.html',  controller: 'CpmCtrl_login'});
-	$routeProvider.otherwise({redirectTo: '/type01'});
+	$routeProvider.otherwise({redirectTo: '/dashboard'});
 }])
 .config(function(localStorageServiceProvider){
 	  localStorageServiceProvider.setPrefix('cpmApp');
 	  // localStorageServiceProvider.setStorageCookieDomain('example.com');
-	  // localStorageServiceProvider.setStorageType('sessionStorage');
+	  localStorageServiceProvider.setStorageType('sessionStorage');
 });

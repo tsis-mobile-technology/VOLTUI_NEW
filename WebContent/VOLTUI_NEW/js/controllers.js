@@ -10,6 +10,15 @@ templateCtrl.controller('MenuCtrl_cpmApp', ['$scope', '$location', '$route', '$r
 
 	    $scope.oneDepth = function () {
 	    	console.log("goOnDepth:" );
+	    	$scope.alreadyLogin = localStorageService.get('loginYn');
+			if($scope.alreadyLogin && $scope.alreadyLogin === "OK") {
+				$rootScope.loginYes = true;
+			}
+			else  {
+				$rootScope.loginYes = false;
+				document.location.href = "/test-web/VOLTUI_NEW/login.html";
+				
+			}
 	    	$scope.rootMenuId = "00000";
         	$scope.twoDepthMenuId = "G0000"; 
         	
@@ -88,12 +97,22 @@ templateCtrl.controller('MenuCtrl_cpmApp', ['$scope', '$location', '$route', '$r
 	        });  
 	    };
 
-		$scope.$on('$routeChangeSuccess', function(next, current) { });
-		$scope.$on('$routeUpdate', function(next, current) { });
-		$scope.$on('$routeChangeStart', function(next, current) { });
-		$scope.$on('$locationChangeSuccess', function(next, current) { });
-		$scope.$on('$locationChangeStart', function(next, current) { });
-		$scope.$on('$includeContentRequested', function(next, current) { });
+	    $scope.$on('$routeChangeSuccess', function(next, current) { 
+			console.log("on:$routeChangeSuccess"); 
+			$scope.alreadyLogin = localStorageService.get('loginYn');
+			if($scope.alreadyLogin && $scope.alreadyLogin === "OK") {
+				$rootScope.loginYes = true;
+			}
+			else {
+				$rootScope.loginYes = false;
+				$location.path("/login");
+			}
+		});
+	    $scope.$on('$routeUpdate', function(next, current) { console.log("on:$routeUpdate"); });
+		$scope.$on('$routeChangeStart', function(next, current) { console.log("on:$routeChangeStart");});
+		$scope.$on('$locationChangeSuccess', function(next, current) { console.log("on:$locationChangeSuccess"); });
+		$scope.$on('$locationChangeStart', function(next, current) { console.log("on:$locationChangeStart"); });
+		$scope.$on('$includeContentRequested', function(next, current) { console.log("on:$includeContentRequested"); });
 		$scope.$on('$includeContentLoaded', function(next, current) { 
 			init();
 //			setupGrid("grdMain", "100%", "500px");
@@ -101,18 +120,21 @@ templateCtrl.controller('MenuCtrl_cpmApp', ['$scope', '$location', '$route', '$r
 
 	}]);
 
-templateCtrl.controller('CpmCtrl_login', ['$scope', '$route', '$location', 'requestHTTP', 'localStorageService', function($scope, $route, $location, requestHTTP, localStorageService){
+templateCtrl.controller('CpmCtrl_login', ['$rootScope', '$scope', '$route', '$location', 'requestHTTP', 'localStorageService', function($rootScope, $scope, $route, $location, requestHTTP, localStorageService){
 
 	$scope.$on('$routeChangeSuccess', function(next, current) { 
 		console.log("on:$routeChangeSuccess"); 
-		$scope.loginYn = localStorageService.get('loginYn');
-		if($scope.loginYn && $scope.loginYn === "OK") {
+		$scope.alreadyLogin = localStorageService.get('loginYn');
+		if($scope.alreadyLogin && $scope.alreadyLogin === "OK") {
 			alert("자동 로그인되었습니다!");
+			$rootScope.loginYes = true;
 			$location.path("/dashboard");
 		}
+		else 
+			$rootScope.loginYes = false;
 	});
 	$scope.$on('$routeUpdate', function(next, current) { console.log("on:$routeUpdate"); });
-	$scope.$on('$routeChangeStart', function(next, current) { console.log("on:$routeChangeStart"); });
+	$scope.$on('$routeChangeStart', function(next, current) { console.log("on:$routeChangeStart");});
 	$scope.$on('$locationChangeSuccess', function(next, current) { console.log("on:$locationChangeSuccess"); });
 	$scope.$on('$locationChangeStart', function(next, current) { console.log("on:$locationChangeStart"); });
 	$scope.$on('$includeContentRequested', function(next, current) { console.log("on:$includeContentRequested"); });
@@ -124,7 +146,8 @@ templateCtrl.controller('CpmCtrl_login', ['$scope', '$route', '$location', 'requ
 			//http call
 			localStorageService.remove('loginYn');
     		localStorageService.set('loginYn',"OK");
-			$location.path("/dashboard");
+    		$rootScope.loginYes = true;
+			document.location.href = "/test-web/VOLTUI_NEW/";
 		}
 	};
 

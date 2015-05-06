@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html ng-app="cpmApp">
+    <!-- head:START -->
+    <head>
+        <!-- head_meta:START -->
+        <meta charset="UTF-8"  content="no-cache">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+        <!-- head_meta:END -->
+        <!-- head_title:START -->
+        <title></title>
+        <!-- head_title:END -->
+        <!-- start: Mobile Specific -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- end: Mobile Specific -->
+        <!-- head_css:START -->
+        <link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="assets/css/datepicker3.css" type="text/css" /> -->
+        <link rel="stylesheet" href="css/style.css" type="text/css" />
+        <link rel="stylesheet" href="css/app.css" type="text/css" />
+        <!-- ngDialog -->
+        <link rel="stylesheet" href="assets/css/ngDialog.css">
+		<link rel="stylesheet" href="assets/css/ngDialog-theme-default.css">
+		<link rel="stylesheet" href="assets/css/ngDialog-theme-plain.css">
+        <!-- head_css:END -->
+        <!-- head_script:START -->
+        <script src="assets/js/jquery-1.11.0.min.js"></script>
+        <script src="assets/js/jquery-ui-1.10.4.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <!-- dashboard: javascript -->
+        <!-- 
+        <script src="assets/js/moment.js"></script>
+        <script src="assets/js/easypiechart.js"></script>
+        <script src="assets/js/controlfrog-plugins.js"></script>
+        <script src="assets/js/controlfrog.js"></script> 
+        -->
+        <!-- <script src="assets/js/bootstrap-datepicker.min.js"></script> -->
+        <!--[if lt IE 9]>
+            <script src="assets/js/html5shiv.js"></script>
+            <script src="assets/js/respond.min.js"></script>
+        <![endif]-->
+        <script>
+            $(function () {
+                $(document).ready(function () {
+                    $('.tab-menu').children('div').off('click').on('click', function () {
+                        $('.tab-menu div').removeClass('active');
+                        $(this).addClass('active');
+                    });
+                });
+            });
+        </script>
+        <!-- head_css:END -->
+    </head>
+    <!-- head:END -->
+    <!-- body:START -->
+    <body>
+        <div class="login-body" ng-controller="CpmCtrl_login">
+            <div class="login-wrap">
+                <div class="login-header">
+                    <img src="img/img_logo.png" />
+                    <span>공사공정관리시스템</span>
+                </div>
+                <form name="loginForm" ng-submit="submitLoginForm(loginForm.$valid)" >
+                    <table>
+                        <colgroup>
+                            <col style="width:180px">
+                            <col style="width:110px">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" placeholder="아이디" name="loginid" ng-model="login_id" ng-minlength="3" ng-maxlength="8" required/></td>
+                                <td class="ta-c" rowspan="2"><button type="submit" class="btn_login">Login</button></td>
+                            </tr>
+                            <tr>
+                                <td><input type="password" placeholder="비밀번호" name="loginpwd" ng-model="login_pwd" required/></td>
+                            </tr>
+                            <tr class="list_user">
+                                <td><input type="checkbox" ng-model="login_id_save"/> 아이디 저장</td>
+                                <td class="ta-c">비밀번호 분실</td>
+                            </tr>
+                            <tr>
+                            	<td>
+                            		<p ng-show="loginForm.loginid.$invalid && !loginForm.loginid.$pristine">아이디를 입력하시거나 올바른 아이디를 입력하세요!</p>
+                            		<p ng-show="loginForm.loginpwd.$invalid && !loginForm.loginpwd.$pristine">패스워드를 입력하세요!</p>
+                            	</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <span class="system_charge">시스템 담당자 : 티시스 아무개 (070-8188-0000)</span>
+                </form>
+            </div>
+        </div>
+        <!-- JavaScript:START -->
+        <!-- AngularJS JavaScript:START -->
+        <!-- <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script> -->
+        <script src="bower_components/angular.js"></script>
+        <script src="bower_components/angular-route.js"></script>
+        <script src="bower_components/angular-touch.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/services.js"></script>
+        <script src="js/controllers.js"></script> 
+        <script src="js/filters.js"></script>
+        <script src="js/directives.js"></script>
+        <!-- AngularJS JavaScript:END -->
+		<!-- start: local Storage -->
+		<script type="text/javascript" src="assets/js/angular-local-storage.js"></script>
+		<script type="text/javascript" src="assets/js/common.js"></script>
+		<!-- end: local Storage -->
+		<!-- start: ngDialog -->
+		<script type="text/javascript" src="assets/js/ngDialog.js"></script>
+		<!-- end: ngDialog -->
+        <!-- Javascript:END -->
+    </body>
+    <!-- body:END -->
+</html>
